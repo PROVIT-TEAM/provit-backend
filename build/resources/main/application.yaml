@@ -1,0 +1,39 @@
+server:
+  port: 9090
+
+spring:
+  datasource:
+    url: 'jdbc:mysql://127.0.0.1:3306/provit?serverTimezone=Asia/Seoul'
+    username: 'wz97'
+    password: '##wo26dhkttn'
+
+  jpa:
+    generate-ddl: true
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        format_sql: true
+
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: tales0708@gmail.com
+    password: payf qgdn kzsy ewyu
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+            required: true
+          connection-timeout: 5000
+          timeout: 5000
+          write timeout: 5000
+      auth-code-expiration-millis: 900000 #15분
+
+jwt:
+  header: Authorization
+  secret: c2lsdmVybmluZS10ZWNoLXNwcmluZy1ib290LWp3dC10dXRvcmlhbC1zZWNyZXQtc2lsdmVybmluZS10ZWNoLXNwcmluZy1ib290LWp3dC10dXRvcmlhbC1zZWNyZXQK
+  token-validity-in-seconds: 30000

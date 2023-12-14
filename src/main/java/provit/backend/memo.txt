@@ -1,0 +1,17 @@
+패키지 구조
+1. adapter
+-in
+    -web : 컨트롤러 -> application/port/in 유즈케이스와 인터랙션
+-out : 입력을 db로, 결과를 app으로 반환
+
+2. application
+-port
+    -in : (interface)유즈케이스 -> 각 application/service와 인터랙션
+    -out : (interface) 출력 포트
+
+-service : 유즈케이스 구현체
+
+3. domain : 엔티티
+
+Api 흐름
+Controller -> (UseCase를 통해서)Service -> (out 포트를 통해서)Adapter -> Repository/Entity
