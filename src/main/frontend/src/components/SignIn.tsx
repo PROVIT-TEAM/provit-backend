@@ -2,9 +2,9 @@
 import React from 'react'
 import { signUpModalState } from '../recoil/modalState';
 import { useRecoilState } from 'recoil';
-import { LoginInfo, loginInput, loginTest, tokenTest } from '../api/RegistUser';
 import { StyledModalDimmer, StyledModalBody, StyledModalTitle, StyledModalButton } from '../styles/Modal';
 import { ModalHeader, CloseButton, CenterDiv, StyledInputBox, LoginButton, FindPwdButton, StyledSignUp } from '../styles/SignIn';
+import { LoginInfo, login, login2, loginInput, tokenTest } from '../apis/api/UserApi';
 
 interface SignInProps {
     closeModal: () => void;
@@ -25,7 +25,8 @@ const SignIn:React.FC<SignInProps> = ({closeModal}) => {
     }
     const loginClick = () => {
       console.log(loginInfo);
-      loginTest(loginInfo);
+      // login(loginInfo);
+      login2(loginInfo); 
     }
     const testClick = () => {
       tokenTest();

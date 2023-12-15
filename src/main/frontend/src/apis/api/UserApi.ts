@@ -1,6 +1,6 @@
 import axios from "axios";
 import { atom } from "recoil";
-
+import {instance, authInstance} from "../utils/instance";
 
 export interface UserInfo {
     email: string;
@@ -21,8 +21,7 @@ export const loginInput = atom<LoginInfo>({
         password: '',
     }
 })
-
-export const inputState = atom<UserInfo>({
+export const signUptState = atom<UserInfo>({
     key: 'inputState',
     default: {
         email: 'string',
@@ -34,7 +33,7 @@ export const inputState = atom<UserInfo>({
     }
 })
 
-export async function postTest(info: UserInfo){
+export async function signUp(info: UserInfo){
     try{
         await axios.post('/user/regist',{
             email: info.email,
@@ -49,7 +48,7 @@ export async function postTest(info: UserInfo){
     }
 }
 
-export async function loginTest(info: LoginInfo){
+export async function login(info: LoginInfo){
     try{
         await axios.post('/user/login',
         {
@@ -64,16 +63,22 @@ export async function loginTest(info: LoginInfo){
         console.log(e);
     }
 }
+export const login2 = async (user: LoginInfo) => {
+    const isUser = {username: user.username, password: user.password};
+    
+    const request = await instance.post('/user/login',isUser)
+    .then((response)=>{
+        console.log(response.data)
+    })
+}
 
 //똑바로 헤더 설정이 안되는거 같음, 서버쪽으로 넘어오지도 않음
 //spring 필터에서 이미 걸리는듯
 //instance로 해결 완료!
-export const instance = axios.create({
-    headers: {'X-AUTH-TOKEN': 'eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ6ZXplMDhAZ21haWwuY29tIiwiaWF0IjoxNzAyNjY3MDc5LCJleHAiOjE3MDI2Njc5Nzl9.wo5jAK-7nqZTqnCeMkXC6PxC2C0I-UXmCB__ORKTrrQ'}
-})
+
 export async function tokenTest(){
     try{
-        await instance.post('/user/authTest')
+        await authInstance.post('/user/authTest')
         .then((response)=>{
             console.log(response.data);
         });

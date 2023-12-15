@@ -14,6 +14,7 @@ import org.springframework.web.filter.GenericFilterBean;
 import java.io.IOException;
 
 @RequiredArgsConstructor
+@Slf4j
 public class JwtFilter extends GenericFilterBean {
     private final TokenProvider tokenProvider;
 
@@ -23,6 +24,7 @@ public class JwtFilter extends GenericFilterBean {
 
         if (token!=null && tokenProvider.validateToken(token)){
             Authentication authentication = tokenProvider.getAuthentication(token);
+            log.info(authentication.toString());
             SecurityContextHolder.getContext().setAuthentication(authentication);
         }
         chain.doFilter(request, response);
