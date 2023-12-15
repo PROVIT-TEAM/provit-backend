@@ -1,8 +1,7 @@
-import React from 'react'
-import { CenterDiv, CloseButton, ModalBody, ModalDimmer, ModalHeader } from '../styles/Modal'
+import { StyledCenterDiv, StyledModalCloseButton, StyledModalBody, StyledModalDimmer, StyledModalHeader } from '../styles/Modal'
 import { useRecoilState } from 'recoil'
 import { confirmEmailModalState } from '../recoil/modalState'
-import styled from 'styled-components'
+import { StyledCommonInputBox, StyledConfirmBtn } from '../styles/ConfirmEmail'
 
 const ConfirmEmail = () => {
     const [confirmModal, setConfirmModal] = useRecoilState(confirmEmailModalState)
@@ -14,43 +13,25 @@ const ConfirmEmail = () => {
         closeModal();
     }
 
-  return (
+return (
     <>
-    <ModalDimmer>
-        <ModalBody>
-            <ModalHeader>
-            <CloseButton onClick={closeModal}>X</CloseButton>
+    <StyledModalDimmer>
+        <StyledModalBody>
+            <StyledModalHeader>
+            <StyledModalCloseButton onClick={closeModal}>X</StyledModalCloseButton>
                 <div>인증코드를 이메일로 전송하였습니다.</div>
                 <div>확인 후, 인증번호를 입력해주세요.</div>
-            <CenterDiv>
-                <CommonInputBox type="text" />
+            <StyledCenterDiv>
+                <StyledCommonInputBox type="text" />
                 <p></p>
-                <ConfirmBtn onClick={confirmClick}>인증하기</ConfirmBtn>
-            </CenterDiv>
+                <StyledConfirmBtn onClick={confirmClick}>인증하기</StyledConfirmBtn>
+            </StyledCenterDiv>
             
-            </ModalHeader>
-        </ModalBody>
-    </ModalDimmer>
-    </>
-    
-  )
+            </StyledModalHeader>
+        </StyledModalBody>
+    </StyledModalDimmer>
+    </>   
+)
 }
 
 export default ConfirmEmail
-
-const ConfirmBtn = styled.button`
-  border: none;
-  color: white;
-  background-color: blue;
-  width: 196px;
-  height: 36px;
-  font-weight: bold;
-`
-const CommonInputBox = styled.input`
-  width: 190px;
-  height: 30px;
-  margin-top: 15px;
-  ::placeholder{
-    font-weight: bold;
-  }
-`

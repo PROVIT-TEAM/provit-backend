@@ -1,10 +1,10 @@
 
 import React from 'react'
-import styled from 'styled-components';
-import { ModalDimmer, ModalBody, ModalTitle, ModalButton } from '../styles/Modal';
 import { signUpModalState } from '../recoil/modalState';
 import { useRecoilState } from 'recoil';
 import { LoginInfo, loginInput, loginTest, tokenTest } from '../api/RegistUser';
+import { StyledModalDimmer, StyledModalBody, StyledModalTitle, StyledModalButton } from '../styles/Modal';
+import { ModalHeader, CloseButton, CenterDiv, StyledInputBox, LoginButton, FindPwdButton, StyledSignUp } from '../styles/SignIn';
 
 interface SignInProps {
     closeModal: () => void;
@@ -33,25 +33,25 @@ const SignIn:React.FC<SignInProps> = ({closeModal}) => {
 
     return (
         <>
-        <ModalDimmer> 
-            <ModalBody>
+        <StyledModalDimmer> 
+            <StyledModalBody>
 
               <ModalHeader>
                 <CloseButton onClick={closeModal}>X</CloseButton>
-                <ModalTitle>PROVIT</ModalTitle>
+                <StyledModalTitle>PROVIT</StyledModalTitle>
               </ModalHeader>
 
               <CenterDiv>
                 회원이 아니신가요?
-                <SignUp onClick={SignUpClick}>회원가입 하기</SignUp>
+                <StyledSignUp onClick={SignUpClick}>회원가입 하기</StyledSignUp>
                 </CenterDiv>
               <CenterDiv>
                 <div>
-                  <InputBox type="text" placeholder="이메일" 
+                  <StyledInputBox type="text" placeholder="이메일" 
                   onChange={(e)=>handleInputChange(e, 'username')}/>
                 </div>
                 <div>
-                  <InputBox type="text" placeholder="비밀번호"
+                  <StyledInputBox type="text" placeholder="비밀번호"
                   onChange={(e)=>handleInputChange(e, 'password')}/>
                 </div>
                 <div>
@@ -62,63 +62,12 @@ const SignIn:React.FC<SignInProps> = ({closeModal}) => {
                   </div>
                 </div>
               </CenterDiv>
-              <ModalButton>간편 로그인</ModalButton>
+              <StyledModalButton>간편 로그인</StyledModalButton>
 
-            </ModalBody>
-          </ModalDimmer>
+            </StyledModalBody>
+          </StyledModalDimmer>
         </>
     )
 }
 
 export default SignIn
-const SignUp = styled.button`
-    background: none;
-    border: none;
-    font-size: 15px;
-    font-weight: bold;
-    color: blue;
-`
-const InputBox = styled.input`
-  width: 190px;
-  height: 30px;
-  margin-top: 15px;
-  ::placeholder{
-    font-weight: bold;
-  }
-`
-const FindPwdButton = styled.button`
-  margin-left: 8em;
-  border: none;
-  background: none;
-`
-const LoginButton = styled.button`
-  border: none;
-  color: white;
-  background-color: blue;
-  width: 196px;
-  height: 36px;
-  margin-top: 15px;
-  font-weight: bold;
-`
-const CenterDiv = styled.div`
-  text-align: center;
-  border: none;
-  padding: 5px 0px;
-`
-
-const ModalHeader = styled.div`
-  display: contents;
-  text-align: center;
-  height: 60px;
-  border: none;
-`
-
-const CloseButton = styled.button`
-  text-align: center;
-  background: none;
-  border: none;
-  width: 52px;
-  height: 32px;
-  margin-left: 85%;
-  font-weight: bold;
-`;

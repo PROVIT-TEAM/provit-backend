@@ -1,8 +1,8 @@
 import React from 'react'
-import { ModalDimmer, ModalBody, ModalTitle, ModalHeader, CloseButton, CenterDiv } from '../styles/Modal';
-import styled from 'styled-components';
 import { useRecoilState } from 'recoil';
 import { loginModalState, signUpEmailModalState } from '../recoil/modalState';
+import { StyledModalDimmer, StyledModalBody, StyledModalTitle, StyledModalHeader, StyledModalCloseButton, StyledCenterDiv } from '../styles/Modal';
+import { StyledEmailLogin, StyledKaKao, StyledLoginBtn } from '../styles/SignUp';
 
 interface SignUpProps {
     closeModal: () => void;
@@ -22,60 +22,35 @@ const SignUp: React.FC<SignUpProps> = ({closeModal}) => {
 
     return (
         <>
-        <ModalDimmer> 
-            <ModalBody>
+        <StyledModalDimmer> 
+            <StyledModalBody>
 
-              <ModalHeader>
-                <CloseButton onClick={closeModal}>X</CloseButton>
-                <ModalTitle>PROVIT</ModalTitle>
-              </ModalHeader>
+              <StyledModalHeader>
+                <StyledModalCloseButton onClick={closeModal}>X</StyledModalCloseButton>
+                <StyledModalTitle>PROVIT</StyledModalTitle>
+              </StyledModalHeader>
 
-              <CenterDiv>
+              <StyledCenterDiv>
                 이미 회원이신가요?
-                <LoginBtn onClick={LoginClick}>로그인하기</LoginBtn>
-                </CenterDiv>
-              <CenterDiv>
+                <StyledLoginBtn onClick={LoginClick}>로그인하기</StyledLoginBtn>
+                </StyledCenterDiv>
+              <StyledCenterDiv>
                 <div>
-                  <KaKao>카카오로 가입하기</KaKao>
+                  <StyledKaKao>카카오로 가입하기</StyledKaKao>
                 </div>
                 <div>
-                  <EmailLoginBtn onClick={EmailClick}>이메일로 가입하기</EmailLoginBtn>
+                  <StyledEmailLogin onClick={EmailClick}>이메일로 가입하기</StyledEmailLogin>
                 </div>
-              </CenterDiv>
-              <CenterDiv>
+              </StyledCenterDiv>
+              <StyledCenterDiv>
                 <p>다른 방식으로 가입하기</p>
-              </CenterDiv>
+              </StyledCenterDiv>
 
-            </ModalBody>
-          </ModalDimmer>
+            </StyledModalBody>
+          </StyledModalDimmer>
         </>
     )
 }
 
 export default SignUp
 
-const LoginBtn = styled.button`
-    background: none;
-    border: none;
-    font-size: 15px;
-    font-weight: bold;
-    color: blue;
-`
-const KaKao = styled.button`
-  border: none;
-  color: black;
-  background-color: none;
-  width: 196px;
-  height: 36px;
-  margin-top: 15px;
-  font-weight: bold;
-`
-const EmailLoginBtn = styled.button`
-  border: none;
-  color: white;
-  background-color: blue;
-  width: 196px;
-  height: 36px;
-  margin-top: 15px;
-  font-weight: bold;
-`
