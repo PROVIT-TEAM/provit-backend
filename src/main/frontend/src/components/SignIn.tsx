@@ -4,16 +4,31 @@ import styled from 'styled-components';
 import { ModalDimmer, ModalBody, ModalTitle, ModalButton } from '../styles/Modal';
 import { signUpModalState } from '../recoil/modalState';
 import { useRecoilState } from 'recoil';
+import { LoginInfo, loginInput, loginTest, tokenTest } from '../api/RegistUser';
 
 interface SignInProps {
     closeModal: () => void;
 }
 
 const SignIn:React.FC<SignInProps> = ({closeModal}) => {
+    const [loginInfo, setLoginInfo] = useRecoilState<LoginInfo>(loginInput)
     const [signUpModal, setSignUpModal] = useRecoilState(signUpModalState);
+    const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>, field: keyof LoginInfo) => {
+      setLoginInfo({
+        ...loginInfo,
+        [field]: e.target.value,
+      })
+    };
     const SignUpClick = () => {
         setSignUpModal({isOpen: true});
         closeModal();
+    }
+    const loginClick = () => {
+      console.log(loginInfo);
+      loginTest(loginInfo);
+    }
+    const testClick = () => {
+      tokenTest();
     }
 
     return (
@@ -32,14 +47,19 @@ const SignIn:React.FC<SignInProps> = ({closeModal}) => {
                 </CenterDiv>
               <CenterDiv>
                 <div>
-                  <InputBox type="text" placeholder="이메일" />
+                  <InputBox type="text" placeholder="이메일" 
+                  onChange={(e)=>handleInputChange(e, 'username')}/>
                 </div>
                 <div>
-                  <InputBox type="text" placeholder="비밀번호"/>
+                  <InputBox type="text" placeholder="비밀번호"
+                  onChange={(e)=>handleInputChange(e, 'password')}/>
                 </div>
                 <div>
-                  <LoginButton>로그인 하기</LoginButton>
-                  <div><FindPwdButton>비밀번호 찾기</FindPwdButton></div>
+                  <LoginButton onClick={loginClick}>로그인 하기</LoginButton>
+                  <div>
+                    <button onClick={testClick}>tokenTest</button>
+                    <FindPwdButton>비밀번호 찾기</FindPwdButton>
+                  </div>
                 </div>
               </CenterDiv>
               <ModalButton>간편 로그인</ModalButton>
