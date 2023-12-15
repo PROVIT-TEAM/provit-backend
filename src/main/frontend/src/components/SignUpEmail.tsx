@@ -1,7 +1,7 @@
 import React from 'react'
 import ConfirmEmail from './ConfirmEmail'
 import { useRecoilState } from 'recoil'
-import { UserInfo, inputState, postTest } from '../api/RegistUser'
+import { UserInfo, signUptState, signUp } from '../apis/api/UserApi'
 import { confirmEmailModalState, signUpEmailModalState } from '../recoil/modalState'
 import { StyledCenterDiv, StyledModalCloseButton, StyledModalBody, StyledModalDimmer, StyledModalHeader, StyledModalTitle } from '../styles/Modal'
 import { StyledCommonInputBox, StyledNameAndBirth, StyledLabel, StyledSubmitBtn } from '../styles/SignUpEmail'
@@ -11,7 +11,7 @@ interface SignUpEmailProps {
 }
 
 const SignUpEmail:React.FC<SignUpEmailProps> = ({closeModal}) => {
-  const [inputVal, setInputVal] = useRecoilState<UserInfo>(inputState)
+  const [inputVal, setInputVal] = useRecoilState<UserInfo>(signUptState)
   const [confirmModal, setConfirmModal] = useRecoilState(confirmEmailModalState)
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>, field: keyof UserInfo) => {
     setInputVal({
@@ -21,7 +21,7 @@ const SignUpEmail:React.FC<SignUpEmailProps> = ({closeModal}) => {
   };
   const signUpClick = () => {
     console.log(inputVal);
-    postTest(inputVal);
+    signUp(inputVal);
   }
   const emailConfirmClick = () => {
     setConfirmModal({isOpen: true});
