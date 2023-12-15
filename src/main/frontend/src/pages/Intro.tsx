@@ -1,9 +1,10 @@
-import { Header, StyledButton, StyledDiv } from "../../styles/Intro";
-import SignUp from "../../components/SignUp";
+import { Header, StyledButton, StyledDiv } from "../styles/Intro";
+import SignUp from "../components/SignUp";
 import { useRecoilState } from "recoil";
-import { loginModalState, modalState, signUpEmailModalState, signUpModalState } from "../../recoil/modalState";
-import SignIn from "../../components/SignIn";
-import SignUpEmail from "../../components/SignUpEmail";
+import { loginModalState, modalState, signUpEmailModalState, signUpModalState } from "../recoil/modalState";
+import SignIn from "../components/SignIn";
+import SignUpEmail from "../components/SignUpEmail";
+import { Link, Route, Routes } from "react-router-dom";
 
 function Intro2() {
   const [modal, setModal] = useRecoilState(modalState)

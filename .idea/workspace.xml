@@ -12,34 +12,24 @@
       <change beforePath="$PROJECT_DIR$/.gradle/8.5/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.5/fileHashes/resourceHashesCache.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/file-system.probe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase_[Changes]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase__Changes_.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/java/main/provit/backend/adapter/in/web/UserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/provit/backend/adapter/in/web/UserController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/provit/backend/application/service/UserService.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/provit/backend/application/service/UserService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/application.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/compileTransaction/stash-dir/CommandUserPort.class.uniqueId4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/compileTransaction/stash-dir/LoginPersistenceAdapter.class.uniqueId8" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/compileTransaction/stash-dir/RegistUseCase.class.uniqueId7" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/compileTransaction/stash-dir/UserController.class.uniqueId2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/compileTransaction/stash-dir/UserDetailService.class.uniqueId5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/compileTransaction/stash-dir/UserDto$UserDtoBuilder.class.uniqueId9" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/compileTransaction/stash-dir/UserDto.class.uniqueId6" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/compileTransaction/stash-dir/UserEntity$UserEntityBuilder.class.uniqueId1" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/compileTransaction/stash-dir/UserEntity.class.uniqueId0" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/compileTransaction/stash-dir/UserRepository.class.uniqueId3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/compileTransaction/stash-dir/UserService.class.uniqueId10" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/provit/backend/config/SecurityConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/provit/backend/config/SecurityConfig.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/compileTransaction/stash-dir/UserController.class.uniqueId0" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/provit/backend/application/port/in/RegistUseCase.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/provit/backend/application/port/in/dto/LoginReq.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/provit/backend/application/port/in/dto/LoginRes.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/provit/backend/application/port/in/dto/SignUpReq.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/provit/backend/application/port/in/dto/Token.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/provit/backend/application/service/UserDetailService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/provit/backend/application/util/JwtFilter.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/provit/backend/application/util/JwtSecurityConfig.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/provit/backend/application/util/TokenProvider.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/provit/backend/config/SecurityConfig.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/provit/backend/JwtTokenTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/frontend/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/frontend/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/frontend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/frontend/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/frontend/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/frontend/src/App.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/frontend/src/api/RegistUser.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/frontend/src/api/RegistUser.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/frontend/src/components/SignIn.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/frontend/src/components/SignIn.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/frontend/src/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/frontend/src/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/frontend/src/pages/intro/Intro.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/provit/backend/adapter/in/web/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/provit/backend/adapter/in/web/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/provit/backend/application/util/JwtFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/provit/backend/application/util/JwtFilter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/provit/backend/config/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/provit/backend/config/SecurityConfig.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -220,6 +210,9 @@
       <workItem from="1702460906139" duration="39387000" />
       <workItem from="1702549824933" duration="1589000" />
       <workItem from="1702561525218" duration="408000" />
+      <workItem from="1702561952413" duration="381000" />
+      <workItem from="1702590030359" duration="8800000" />
+      <workItem from="1702664555675" duration="1857000" />
     </task>
     <task id="LOCAL-00001" summary="modified files">
       <created>1701905703824</created>
@@ -344,6 +337,17 @@
     <MESSAGE value="Update : frontend" />
     <MESSAGE value="이메일 인증 기능 테스트" />
     <option name="LAST_COMMIT_MESSAGE" value="이메일 인증 기능 테스트" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/provit/backend/application/util/JwtFilter.java</url>
+          <line>24</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

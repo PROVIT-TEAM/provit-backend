@@ -44,13 +44,14 @@ public class UserController {
     }
     @PostMapping("/login")
     public String login(@RequestBody LoginReq request){
-        log.info(request.toString());
+        log.info(request.getUsername()+","+request.getPassword());
         return loginUseCase.login(request);
     }
     
     //권한 접근 테스트
     @PostMapping("/authTest")
     public String test(HttpServletRequest request){
+        log.info(request.getHeader("X-AUTH-TOKEN"));
         return "ok";
     }
 }
