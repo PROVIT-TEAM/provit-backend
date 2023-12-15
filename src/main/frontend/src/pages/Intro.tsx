@@ -1,10 +1,9 @@
-import { Header, StyledButton, StyledDiv } from "../styles/Intro";
+import { StyledHeader, StyledButton, StyledDiv } from "../styles/Intro";
 import SignUp from "../components/SignUp";
 import { useRecoilState } from "recoil";
 import { loginModalState, modalState, signUpEmailModalState, signUpModalState } from "../recoil/modalState";
 import SignIn from "../components/SignIn";
 import SignUpEmail from "../components/SignUpEmail";
-import { Link, Route, Routes } from "react-router-dom";
 
 function Intro2() {
   const [modal, setModal] = useRecoilState(modalState)
@@ -30,13 +29,13 @@ function Intro2() {
 
   return (  
     <>
-    <Header>
+    <StyledHeader>
       <h2>PROVIT</h2>
       <StyledDiv>
         <StyledButton onClick={openSignInModal}>로그인</StyledButton>
         <StyledButton onClick={openSignUpModal}>회원가입</StyledButton>
       </StyledDiv>
-    </Header>
+    </StyledHeader>
     
     {modal.isOpen && (<>{modal.content}</>)}
     {loginModal.isOpen && (<>{<SignIn closeModal={() => setLoginModal({isOpen: false})} />}</>)}

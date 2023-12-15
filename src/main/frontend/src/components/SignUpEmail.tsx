@@ -1,10 +1,10 @@
 import React from 'react'
+import ConfirmEmail from './ConfirmEmail'
 import { useRecoilState } from 'recoil'
-import { CenterDiv, CloseButton, ModalBody, ModalButton, ModalDimmer, ModalHeader, ModalTitle } from '../styles/Modal'
-import styled from 'styled-components'
 import { UserInfo, inputState, postTest } from '../api/RegistUser'
 import { confirmEmailModalState, signUpEmailModalState } from '../recoil/modalState'
-import ConfirmEmail from './ConfirmEmail'
+import { StyledCenterDiv, StyledModalCloseButton, StyledModalBody, StyledModalDimmer, StyledModalHeader, StyledModalTitle } from '../styles/Modal'
+import { StyledCommonInputBox, StyledNameAndBirth, StyledLabel, StyledSubmitBtn } from '../styles/SignUpEmail'
 
 interface SignUpEmailProps {
     closeModal: () => void,
@@ -21,7 +21,6 @@ const SignUpEmail:React.FC<SignUpEmailProps> = ({closeModal}) => {
   };
   const signUpClick = () => {
     console.log(inputVal);
-    // registUser(inputVal);
     postTest(inputVal);
   }
   const emailConfirmClick = () => {
@@ -30,29 +29,29 @@ const SignUpEmail:React.FC<SignUpEmailProps> = ({closeModal}) => {
 
   return (
     <>
-    <ModalDimmer>
-        <ModalBody>
-            <ModalHeader>
-                <CloseButton onClick={closeModal}>X</CloseButton>
-                <ModalTitle>PROVIT</ModalTitle>
-            </ModalHeader>
-            <CenterDiv>
+    <StyledModalDimmer>
+        <StyledModalBody>
+            <StyledModalHeader>
+                <StyledModalCloseButton onClick={closeModal}>X</StyledModalCloseButton>
+                <StyledModalTitle>PROVIT</StyledModalTitle>
+            </StyledModalHeader>
+            <StyledCenterDiv>
                 <div>
-                    <CommonInputBox
+                    <StyledCommonInputBox
                       type="text" placeholder='아이디'
                       onChange={(e)=> handleInputChange(e, 'userId')}
                     />
                 </div>
                 <div>
-                    <CommonInputBox
+                    <StyledCommonInputBox
                       type="text" placeholder='비밀번호'
                       onChange={(e)=> handleInputChange(e, 'password')}
                     />
                 </div>
                 <div>
-                    <CommonInputBox type="text" placeholder='비밀번호 확인'/>
+                    <StyledCommonInputBox type="text" placeholder='비밀번호 확인'/>
                 </div>
-                <NameAndBirth>
+                <StyledNameAndBirth>
                     <input
                       type="text" id='name' placeholder='이름'
                       onChange={(e)=> handleInputChange(e, 'name')}
@@ -61,82 +60,26 @@ const SignUpEmail:React.FC<SignUpEmailProps> = ({closeModal}) => {
                       type="text" id='birth' placeholder='생년월일 6자리'
                       onChange={(e)=> handleInputChange(e, 'birth')}
                     />
-                </NameAndBirth>
-                <Label>
+                </StyledNameAndBirth>
+                <StyledLabel>
                     <input
                       type="text" placeholder='이메일'
                       onChange={(e)=> handleInputChange(e, 'email')}
                     />
                     <button onClick={emailConfirmClick}>인증</button>
-                </Label>
+                </StyledLabel>
                 <div>
                     <input type="checkbox"  
                     onChange={(e)=> handleInputChange(e, 'marketing')} />
                     <span>전체동의</span>
                 </div>
-                <SubmitBtn onClick={signUpClick}>가입하기</SubmitBtn>
-            </CenterDiv>
-        </ModalBody>
-    </ModalDimmer>
+                <StyledSubmitBtn onClick={signUpClick}>가입하기</StyledSubmitBtn>
+            </StyledCenterDiv>
+        </StyledModalBody>
+    </StyledModalDimmer>
     {confirmModal.isOpen && (<>{<ConfirmEmail />}</>)}
     </>
   )
 }
 
 export default SignUpEmail
-const DetailBtn = styled.button`
-  border: none;
-  background: none;
-`
-const SubmitBtn = styled.button`
-    border: none;
-  color: white;
-  background-color: blue;
-  width: 196px;
-  height: 36px;
-  margin-top: 15px;
-  font-weight: bold;
-`
-const CommonInputBox = styled.input`
-  width: 190px;
-  height: 30px;
-  margin-top: 15px;
-  ::placeholder{
-    font-weight: bold;
-  }
-`
-const NameAndBirth = styled.div`
-    margin-top: 15px;
-
-    #name{
-        width: 80px;
-        height: 30px;
-        margin-right: 10px;
-    }
-
-    #birth{
-        width: 95px;
-        height: 30px;
-
-    }
-`
-const Label = styled.div`
-  position: relative;
-
-  input {
-    width: 170px;
-    height: 30px;
-    margin-left: 10px;
-    margin-top: 15px;
-    ::placeholder{
-    font-weight: bold;
-  }
-  }
-  button {
-    border: none;
-    background-color: #4c8fca;
-    color: white;
-    font-weight: bold;
-    height: 36px;
-  }
-`;
