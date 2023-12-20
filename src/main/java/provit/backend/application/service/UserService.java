@@ -56,5 +56,4 @@ public class UserService implements RegistUseCase, LoginUseCase {
         }
         return tokenProvider.createToken(isUser.getEmail(), isUser.getRoles());
     }
-
 }

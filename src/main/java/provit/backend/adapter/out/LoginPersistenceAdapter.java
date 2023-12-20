@@ -39,8 +39,8 @@ public class LoginPersistenceAdapter implements CommandUserPort {
     @Override
     public UserDto login(String email, String password) {
         UserEntity user = userRepository.findByEmail(email).orElse(null);
-
-        return UserDto.from(user);
+        UserDto dto = UserDto.from(user);
+        return dto;
     }
 
 }

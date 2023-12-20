@@ -5,24 +5,38 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fe0e28d3-423e-4096-96d2-75d5446c41a8" name="Changes" comment="final">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.5/checksums/checksums.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.5/checksums/checksums.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.5/checksums/md5-checksums.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.5/checksums/md5-checksums.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.5/checksums/sha1-checksums.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.5/checksums/sha1-checksums.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.5/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.5/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.5/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.5/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.5/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.5/fileHashes/fileHashes.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.5/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.5/fileHashes/fileHashes.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.5/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.5/fileHashes/resourceHashesCache.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/file-system.probe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/java/main/provit/backend/adapter/in/web/UserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/provit/backend/adapter/in/web/UserController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/provit/backend/application/util/JwtFilter.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/provit/backend/application/util/JwtFilter.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/compileTransaction/stash-dir/JwtFilter.class.uniqueId2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/compileTransaction/stash-dir/JwtSecurityConfig.class.uniqueId0" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/compileTransaction/stash-dir/SecurityConfig.class.uniqueId1" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/provit/backend/config/WebMvcConfig.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/application.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/compileTransaction/stash-dir/UserController.class.uniqueId0" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/frontend/src/api/RegistUser.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/frontend/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/frontend/public/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/frontend/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/frontend/src/App.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/frontend/src/apis/api/UserApi.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/frontend/src/apis/api/UserApi.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/frontend/src/apis/utils/instance.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/frontend/src/apis/utils/instance.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/frontend/src/components/SignIn.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/frontend/src/components/SignIn.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/frontend/src/components/SignUpEmail.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/frontend/src/components/SignUpEmail.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/frontend/src/pages/Intro.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/frontend/src/pages/Intro.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/provit/backend/adapter/in/web/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/provit/backend/adapter/in/web/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/provit/backend/application/util/JwtFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/provit/backend/application/util/JwtFilter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/provit/backend/adapter/out/LoginPersistenceAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/provit/backend/adapter/out/LoginPersistenceAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/provit/backend/application/port/in/dto/Token.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/provit/backend/application/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/provit/backend/application/service/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/provit/backend/config/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/provit/backend/config/SecurityConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/provit/backend/config/WebMvcConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/provit/backend/config/WebMvcConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,8 +67,10 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="TypeScript File" />
-        <option value="Interface" />
+        <option value="HTML File" />
+        <option value="JavaScript File" />
         <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
@@ -88,6 +104,7 @@
   </component>
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
     &quot;Notification.DisplayName-DoNotAsk-Services Tool Window&quot;: &quot;Services tool window available&quot;,
     &quot;Notification.DoNotAsk-Services Tool Window&quot;: &quot;true&quot;,
     &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
@@ -182,6 +199,9 @@
     </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="SpringBootOptions">
+    <option name="showAdditionalConfigNotification" value="false" />
+  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="fe0e28d3-423e-4096-96d2-75d5446c41a8" name="Changes" comment="final" />
@@ -206,6 +226,11 @@
       <workItem from="1702561952413" duration="381000" />
       <workItem from="1702590030359" duration="8800000" />
       <workItem from="1702664555675" duration="5457000" />
+      <workItem from="1702703212146" duration="19000" />
+      <workItem from="1702703244246" duration="1552000" />
+      <workItem from="1702876909297" duration="13802000" />
+      <workItem from="1702933770227" duration="24266000" />
+      <workItem from="1703020485409" duration="7066000" />
     </task>
     <task id="LOCAL-00001" summary="modified files">
       <created>1701905703824</created>
@@ -330,17 +355,6 @@
     <MESSAGE value="Update : frontend" />
     <MESSAGE value="이메일 인증 기능 테스트" />
     <option name="LAST_COMMIT_MESSAGE" value="이메일 인증 기능 테스트" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/provit/backend/application/util/JwtFilter.java</url>
-          <line>25</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
