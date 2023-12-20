@@ -1,10 +1,7 @@
-import React from 'react';
-import {RecoilRoot} from "recoil";
 import logo from './assets/logo.svg';
 import './styles/App.css';
 import Intro from './pages/Intro';
 import { Link, Route, Routes } from 'react-router-dom';
-import SignIn from './components/SignIn';
 
 function App() {
   return (

@@ -37,3 +37,11 @@ jwt:
   header: Authorization
   secret: c2lsdmVybmluZS10ZWNoLXNwcmluZy1ib290LWp3dC10dXRvcmlhbC1zZWNyZXQtc2lsdmVybmluZS10ZWNoLXNwcmluZy1ib290LWp3dC10dXRvcmlhbC1zZWNyZXQK
   token-validity-in-seconds: 30000
+
+OAuth2:
+  google:
+    LoginUrl: "https://accounts.google.com/o/oauth2/v2/auth"
+    Google_Token_Url: "https://oauth2.googleapis.com/token"
+    GoogleRedirectUrl: "http://localhost:9090/oauth2/callback/google"
+    GoogleClientId: "71860089687-7sl0ra1430hp1jvm7qj5qckrvgir659s.apps.googleusercontent.com"
+    GoogleClientSecret: "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"

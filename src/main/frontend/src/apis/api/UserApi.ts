@@ -72,10 +72,6 @@ export const login2 = async (user: LoginInfo) => {
     })
 }
 
-//똑바로 헤더 설정이 안되는거 같음, 서버쪽으로 넘어오지도 않음
-//spring 필터에서 이미 걸리는듯
-//instance로 해결 완료!
-
 export async function tokenTest(){
     try{
         await authInstance.post('/user/authTest')
@@ -85,4 +81,19 @@ export async function tokenTest(){
     } catch (e) {
         console.log(e);
     }
+}
+
+export async function naver(){
+    const request = await instance.get('/oauth2/google')
+    // .then((response)=>{
+    //     console.log(response)
+    // })
+    
+}
+
+export async function naverCallback(uri: string){
+    const request = await axios.get(uri)
+    .then((response)=>{
+        console.log("callback:", response.data)
+    })
 }

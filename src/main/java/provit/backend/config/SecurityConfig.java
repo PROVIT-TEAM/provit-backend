@@ -18,15 +18,26 @@ import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.AuthenticationFilter;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import provit.backend.application.util.JwtFilter;
 import provit.backend.application.util.TokenProvider;
-
-@EnableWebSecurity
 @Configuration
+@EnableWebSecurity
+@EnableWebMvc
 @RequiredArgsConstructor
-public class SecurityConfig {
+public class SecurityConfig implements WebMvcConfigurer {
     private final TokenProvider tokenProvider;
 
+    @Override
+    public void addCorsMappings(CorsRegistry registry) {
+        registry.addMapping("/**")
+                .allowedOriginPatterns("*", "http://localhost:3000")
+                .allowedHeaders("*")
+                .allowCredentials(true)
+                .allowedMethods("OPTIONS","GET","POST","PUT","DELETE");
+    }
     @Bean //암호화에 써야함
     public PasswordEncoder passwordEncoder() {
         return PasswordEncoderFactories.createDelegatingPasswordEncoder();
