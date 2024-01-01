@@ -1,4 +1,4 @@
-package provit.backend.config;
+package provit.backend.config.email;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;

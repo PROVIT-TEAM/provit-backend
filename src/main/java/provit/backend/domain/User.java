@@ -8,15 +8,13 @@ public class User {
     private Long id;
     private String email;
     private String name;
-    private String userId;
     private String password;
     private String birth;
     private String marketing;
 
-    public User(String email, String name, String userId, String password, String birth, String marketing) {
+    public User(String email, String name, String password, String birth, String marketing) {
         this.email = email;
         this.name = name;
-        this.userId = userId;
         this.password = password;
         this.birth = birth;
         this.marketing = marketing;

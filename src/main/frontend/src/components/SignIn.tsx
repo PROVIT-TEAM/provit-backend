@@ -4,7 +4,7 @@ import { signUpModalState } from '../recoil/modalState';
 import { useRecoilState } from 'recoil';
 import { StyledModalDimmer, StyledModalBody, StyledModalTitle, StyledModalButton } from '../styles/Modal';
 import { ModalHeader, CloseButton, CenterDiv, StyledInputBox, LoginButton, FindPwdButton, StyledSignUp } from '../styles/SignIn';
-import { LoginInfo, login, login2, loginInput, naver, tokenTest } from '../apis/api/UserApi';
+import { LoginInfo, login, loginInput, tokenTest } from '../apis/api/UserApi';
 
 interface SignInProps {
     closeModal: () => void;
@@ -24,9 +24,7 @@ const SignIn:React.FC<SignInProps> = ({closeModal}) => {
         closeModal();
     }
     const loginClick = () => {
-      console.log(loginInfo);
-      // login(loginInfo);
-      login2(loginInfo); 
+      login(loginInfo); 
     }
     const testClick = () => {
       tokenTest();

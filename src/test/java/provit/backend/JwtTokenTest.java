@@ -24,7 +24,6 @@ public class JwtTokenTest {
         String pwd = "비밀번호1";
         User user = new User("zeze123@naver.com",
                 "wonzae",
-                "zeze123",
                 "비밀번호1",
                 "970708",
                 "ok");

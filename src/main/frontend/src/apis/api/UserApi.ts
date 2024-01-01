@@ -1,5 +1,5 @@
 import axios from "axios";
-import { atom } from "recoil";
+import { atom, useRecoilState } from "recoil";
 import {instance, authInstance} from "../utils/instance";
 
 export interface UserInfo {
@@ -22,7 +22,7 @@ export const loginInput = atom<LoginInfo>({
     }
 })
 export const signUptState = atom<UserInfo>({
-    key: 'inputState',
+    key: 'SignUpInputState',
     default: {
         email: 'string',
         name: 'string',
@@ -32,6 +32,8 @@ export const signUptState = atom<UserInfo>({
         marketing: false,
     }
 })
+
+
 
 export async function signUp(info: UserInfo){
     try{
@@ -48,27 +50,14 @@ export async function signUp(info: UserInfo){
     }
 }
 
-export async function login(info: LoginInfo){
-    try{
-        await axios.post('/user/login',
-        {
-            username: info.username,
-            password: info.password,
-        })
-        .then((response)=>{
-            console.log(response.data)
-            return response.data;
-        });
-    } catch (e) {
-        console.log(e);
-    }
-}
-export const login2 = async (user: LoginInfo) => {
+//이메일 로그인
+export const login = async (user: LoginInfo) => {
     const isUser = {username: user.username, password: user.password};
-    
+
     const request = await instance.post('/user/login',isUser)
     .then((response)=>{
         console.log(response.data)
+        sessionStorage.setItem("userState", JSON.stringify(response.data))
     })
 }
 
@@ -85,15 +74,20 @@ export async function tokenTest(){
 
 export async function naver(){
     const request = await instance.get('/oauth2/google')
-    // .then((response)=>{
-    //     console.log(response)
-    // })
-    
+    .then(response => {
+        if (response.status == 200) {
+            console.log(response.data);
+        }
+        else{
+            console.log("failed");
+        }
+        
+    })
 }
 
-export async function naverCallback(uri: string){
-    const request = await axios.get(uri)
-    .then((response)=>{
-        console.log("callback:", response.data)
+export async function reload(){
+    await instance.get('/oauth2/reload')
+    .then(res => {
+        console.log("success");
     })
 }

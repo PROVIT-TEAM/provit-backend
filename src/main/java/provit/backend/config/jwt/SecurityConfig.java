@@ -1,4 +1,4 @@
-package provit.backend.config;
+package provit.backend.config.jwt;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
@@ -10,35 +10,28 @@ import org.springframework.security.config.annotation.authentication.configurati
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
-import org.springframework.security.config.annotation.web.configurers.CorsConfigurer;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
-import org.springframework.security.web.authentication.AuthenticationFilter;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.web.cors.CorsConfiguration;
-import org.springframework.web.servlet.config.annotation.CorsRegistry;
+import org.springframework.web.cors.CorsConfigurationSource;
+import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
-import provit.backend.application.util.JwtFilter;
-import provit.backend.application.util.TokenProvider;
+import provit.backend.config.jwt.JwtFilter;
+import provit.backend.config.jwt.TokenProvider;
+
+import java.util.List;
+
 @Configuration
 @EnableWebSecurity
 @EnableWebMvc
 @RequiredArgsConstructor
-public class SecurityConfig implements WebMvcConfigurer {
+public class SecurityConfig {
     private final TokenProvider tokenProvider;
 
-    @Override
-    public void addCorsMappings(CorsRegistry registry) {
-        registry.addMapping("/**")
-                .allowedOriginPatterns("*", "http://localhost:3000")
-                .allowedHeaders("*")
-                .allowCredentials(true)
-                .allowedMethods("OPTIONS","GET","POST","PUT","DELETE");
-    }
-    @Bean //암호화에 써야함
+    @Bean //암호화
     public PasswordEncoder passwordEncoder() {
         return PasswordEncoderFactories.createDelegatingPasswordEncoder();
     }
@@ -47,7 +40,20 @@ public class SecurityConfig implements WebMvcConfigurer {
         ProviderManager authenticationManager = (ProviderManager) authenticationConfiguration.getAuthenticationManager();
         return authenticationManager;
     }
-    @Bean
+    @Bean //cors() deprecated
+    public CorsConfigurationSource corsConfigurationSource(){
+        CorsConfiguration corsConfiguration = new CorsConfiguration();
+        corsConfiguration.setAllowedOriginPatterns(List.of("http://localhost:3000", "http://localhost:9090"));
+        corsConfiguration.setAllowedMethods(List.of("GET","POST","PUT","DELETE","OPTION"));
+        corsConfiguration.setAllowedHeaders(List.of("*"));
+        corsConfiguration.setAllowCredentials(true);
+
+        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+        source.registerCorsConfiguration("*", corsConfiguration);
+
+        return source;
+    }
+    @Bean //WebSecurityConfigurerAdapter deprecated
     public SecurityFilterChain filterChain(HttpSecurity httpSecurity) throws Exception{
         httpSecurity
                 .cors(Customizer.withDefaults())
@@ -56,11 +62,12 @@ public class SecurityConfig implements WebMvcConfigurer {
                         sessionManagement.sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 )
                 .authorizeHttpRequests(authz -> authz
-                        .requestMatchers("/admin/**").hasRole("ADMIN")
+//                        .requestMatchers("/admin/**").hasRole("ADMIN")
                         .requestMatchers("/user/authTest").hasRole("USER")
-                        .requestMatchers("/user/join","/user/login2","/user/regist","/user/login").permitAll()
+                        .requestMatchers("/user/regist","/user/login").permitAll()
                         .anyRequest().permitAll()
                 )
+                .logout((logout) -> logout.logoutUrl("/logout").permitAll())
                 .addFilterBefore(new JwtFilter(tokenProvider), UsernamePasswordAuthenticationFilter.class);
 
                 return httpSecurity.build();

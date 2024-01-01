@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.test.context.ContextConfiguration;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.security.NoSuchAlgorithmException;
@@ -12,6 +13,7 @@ import java.security.SecureRandom;
 import java.util.Random;
 
 @SpringBootTest
+@ContextConfiguration(classes = BackendApplication.class)
 public class SmtpTest {
 
     @Autowired
@@ -52,9 +54,12 @@ public class SmtpTest {
     public void test1(){
         /*Redis 안쓰면 인증번호 저장 어떻게 하지,,,session?*/
         String toEmail = "lwj6869@naver.com";
+        String code = createCode();
         String title = "SMTP 테스트";
         String text = "<div>PROVIT 회원 가입 인증 이메일 입니다.</div>"
-                +"<br>"+createCode()+"</br>";
+                +"<br>"+code+"</br>"
+                +"<a href='http:localhost:9090/user/emailConfirm"
+                +"' target='_blenk'>이메일 인증 확인</a>";
 
         sendEmail(toEmail, title, text);
     }

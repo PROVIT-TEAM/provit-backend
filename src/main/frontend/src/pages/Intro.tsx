@@ -4,7 +4,8 @@ import { useRecoilState } from "recoil";
 import { loginModalState, modalState, signUpEmailModalState, signUpModalState } from "../recoil/modalState";
 import SignIn from "../components/SignIn";
 import SignUpEmail from "../components/SignUpEmail";
-import { naver } from "../apis/api/UserApi";
+import { naver, reload } from "../apis/api/UserApi";
+import { instance } from "../apis/utils/instance";
 
 function Intro2() {
   const [modal, setModal] = useRecoilState(modalState)
@@ -27,9 +28,6 @@ function Intro2() {
   const closeModal = () => {
     setModal({ isOpen: false, content: null });
   };
-  const naverClicked = () => {
-    naver();
-  }
 
   return (  
     <>
@@ -39,7 +37,8 @@ function Intro2() {
         <StyledButton onClick={openSignInModal}>로그인</StyledButton>
         <StyledButton onClick={openSignUpModal}>회원가입</StyledButton>
       </StyledDiv>
-      <StyledButton onClick={naverClicked}>네이버</StyledButton>
+      <StyledButton><a href="http://localhost:9090/oauth2/google">구글</a></StyledButton>
+      
     </StyledHeader>
     
     {modal.isOpen && (<>{modal.content}</>)}

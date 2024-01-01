@@ -1,10 +1,7 @@
 package provit.backend.adapter.out.persistence.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -18,20 +15,24 @@ import java.util.stream.Collectors;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@Getter
+@Data
 public class UserEntity implements UserDetails {
     @Id
     @Column(name = "user_pk")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
+    private String provider;
+    private String refresh;
     private String email;
-    private String name;
-    private String userId;
     private String password;
+    private String name;
     private String birth;
     private String marketing;
 
+
+    // ElementCollection은 CASCADE ALL인데,
+    // 왜 user테이블 삭제할때  Cannot delete or update a parent row: a foreign key constraint fails?
+    // 테이블 고민 해보자
     @ElementCollection(fetch = FetchType.EAGER)
     @Builder.Default
     private List<String> roles = new ArrayList<>();

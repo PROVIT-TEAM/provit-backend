@@ -1,4 +1,4 @@
-package provit.backend.application.util;
+package provit.backend.config.jwt;
 
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;

@@ -4,11 +4,8 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-import provit.backend.application.service.OAuthService;
+import org.springframework.web.bind.annotation.*;
+import provit.backend.application.port.in.OAuth2UseCase;
 
 import java.io.IOException;
 
@@ -17,20 +14,40 @@ import java.io.IOException;
 @RequiredArgsConstructor
 @Slf4j
 public class OAuthController {
-    private final OAuthService oAuthService;
+    private final OAuth2UseCase oAuth2UseCase;
 
-    @GetMapping("/callback/google")
-    public ResponseEntity<String> callback(HttpServletRequest req, HttpServletResponse res){
-        log.info("req:"+req.getParameter("code"));
-        return oAuthService.getAccessToken(req.getParameter("code"));
+    @GetMapping("/google") //구글 로그인 페이지 요청
+    public void Get_Google_Url(HttpServletResponse response) throws IOException{
+        response.sendRedirect(oAuth2UseCase.google());
+    }
+    @GetMapping("/kakao") //카카오 로그인 페이지 요청
+    public void Get_Kakao_Url(HttpServletResponse response) throws IOException{
+        response.sendRedirect(oAuth2UseCase.kakao());
+    }
+    @GetMapping("/naver")
+    public void Naver(HttpServletResponse response) throws IOException{
+        response.sendRedirect(oAuth2UseCase.naver());
+    }
+    @GetMapping("/redirect_naver")
+    public void nCallback(HttpServletRequest request, HttpServletResponse response) throws IOException{
+        String code = request.getParameter("code");
+        String state = request.getParameter("state");
+        log.info("code:"+code);
+        log.info("state:"+state);
+        String access_token= oAuth2UseCase.NaverAccessToken(state, code);
     }
 
-    @GetMapping("/google")
-    public void getGoogle(HttpServletRequest request, HttpServletResponse response){
-        try {
-            response.sendRedirect(oAuthService.getGoogleLoginUrl());
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+    @GetMapping("/redirect_google") //구글 인가코드, react에서 안받음
+    public void callback(HttpServletRequest request, HttpServletResponse response) throws IOException{
+        String code = request.getParameter("code");
+        String access_token = oAuth2UseCase.GoogleAccessToken(code);
+        response.sendRedirect("http://localhost:3000");
+    }
+    @GetMapping("/redirect_kakao")
+    public void kCallback(HttpServletRequest request, HttpServletResponse response){
+        String code = request.getParameter("code");
+        log.info("kakao code: "+code);
+        String access_token = oAuth2UseCase.KakaoAccessToken(code);
+
     }
 }

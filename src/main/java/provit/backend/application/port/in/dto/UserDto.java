@@ -24,13 +24,12 @@ public class UserDto {
     @NotBlank
     private final String name;
     @NotBlank
-    private final String userId;
-    @NotBlank
     private final String password;
     @NotBlank
     private final String birth;
     private final String marketing;
     private List<String> roles = new ArrayList<>();
+    private String refresh;
 
     public static UserDto from(UserEntity user) {
        if (user == null) {
@@ -40,7 +39,6 @@ public class UserDto {
        return UserDto.builder()
                .email(user.getEmail())
                .name(user.getName())
-               .userId(user.getUserId())
                .password(user.getPassword())
                .birth(user.getBirth())
                .marketing(user.getMarketing())

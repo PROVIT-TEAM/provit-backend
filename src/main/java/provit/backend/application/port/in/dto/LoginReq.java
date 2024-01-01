@@ -8,7 +8,7 @@ import lombok.Getter;
 @Builder
 public class LoginReq {
     @NotNull
-    private String username;
+    private String email;
     @NotNull
     private String password;
 }

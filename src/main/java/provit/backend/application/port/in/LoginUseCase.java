@@ -1,8 +1,9 @@
 package provit.backend.application.port.in;
 
 import provit.backend.application.port.in.dto.LoginReq;
+import provit.backend.application.port.in.dto.LoginRes;
 
 public interface LoginUseCase {
 
-    String login(LoginReq req);
+    LoginRes login(LoginReq req);
 }

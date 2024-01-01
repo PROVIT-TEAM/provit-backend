@@ -1,5 +1,6 @@
 package provit.backend.adapter.in.web;
 
+import jakarta.mail.MessagingException;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -9,7 +10,8 @@ import org.springframework.web.bind.annotation.*;
 import provit.backend.application.port.in.LoginUseCase;
 import provit.backend.application.port.in.dto.*;
 import provit.backend.application.port.in.RegistUseCase;
-import provit.backend.application.util.TokenProvider;
+import provit.backend.application.service.EmailService;
+import provit.backend.config.jwt.TokenProvider;
 
 @RestController
 @RequestMapping("/user")
@@ -25,20 +27,19 @@ public class UserController {
         UserDto userDto =  UserDto.builder()
                 .email(request.email)
                 .name(request.name)
-                .userId(request.userId)
                 .password(request.password)
-//                .password(passwordEncoder.encode(req.password)) pwd 암호화
-                .birth(request.userId)
+//                .password(passwordEncoder.encode(req.password)) pwd 암호화 저장
                 .marketing(request.marketing)
                 .build();
         return ResponseEntity.ok(registUseCase.registUser(userDto));
 
     }
     @PostMapping("/login")
-    public String login(@RequestBody LoginReq request){
-        log.info(request.getUsername()+","+request.getPassword());
+    public LoginRes login(@RequestBody LoginReq request){
+        log.info(request.getEmail()+","+request.getPassword());
         return loginUseCase.login(request);
     }
+    
     
     //권한 접근 테스트
     @PostMapping("/authTest")
@@ -51,4 +52,16 @@ public class UserController {
                 "authentication:"+authentication;
     }
 
+    //이메일 인증 테스트
+    private final EmailService emailService;
+    @GetMapping("/sendEmailTest")
+    public void sendTest() throws MessagingException {
+        emailService.test1();
+    }
+    @GetMapping("/emailConfirm")
+    public String emailTest(HttpServletRequest request){
+        log.info(request.toString());
+        log.info("api 호출 성공");
+        return "인증 완료";
+    }
 }
