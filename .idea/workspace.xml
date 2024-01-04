@@ -5,72 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fe0e28d3-423e-4096-96d2-75d5446c41a8" name="Changes" comment="final">
-      <change afterPath="$PROJECT_DIR$/src/main/frontend/src/assets/images/arrow.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/frontend/src/assets/images/google_login.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/frontend/src/assets/images/kakao_login.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/frontend/src/assets/images/kakao_round.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/frontend/src/assets/images/naver_login.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/frontend/src/components/CommonBtn.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/frontend/src/components/DatePicker.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/frontend/src/components/Header.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/frontend/src/components/modals/LoginModal.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/frontend/src/components/modals/ResetPwdModal.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/frontend/src/components/modals/SignUpInfoModal.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/frontend/src/components/modals/SignUpModal.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/frontend/src/hook/modal.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/frontend/src/pages/Main.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/frontend/src/recoil/atom.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/frontend/src/styles/button/commonBtn.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/frontend/src/styles/input/commonInput.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/frontend/src/styles/modal.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/frontend/src/types/images.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.5/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.5/executionHistory/executionHistory.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.5/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.5/executionHistory/executionHistory.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.5/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.5/fileHashes/fileHashes.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.5/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.5/fileHashes/fileHashes.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.5/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.5/fileHashes/resourceHashesCache.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/file-system.probe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/provit/backend/adapter/in/web/OAuthController.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/provit/backend/adapter/in/web/OAuthController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/provit/backend/adapter/in/web/UserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/provit/backend/adapter/in/web/UserController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/provit/backend/application/service/EmailService.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/provit/backend/application/service/EmailService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/provit/backend/application/service/UserService.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/provit/backend/application/service/UserService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/compileTransaction/stash-dir/LoginPersistenceAdapter.class.uniqueId2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/compileTransaction/stash-dir/LoginReq$LoginReqBuilder.class.uniqueId1" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/compileTransaction/stash-dir/LoginReq.class.uniqueId3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/compileTransaction/stash-dir/LoginUseCase.class.uniqueId4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/compileTransaction/stash-dir/OAuthService.class.uniqueId5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/compileTransaction/stash-dir/UserController.class.uniqueId0" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileJava/compileTransaction/stash-dir/UserController.class.uniqueId0" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/compileTransaction/stash-dir/UserService.class.uniqueId6" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/frontend/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/frontend/public/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/frontend/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/frontend/src/App.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/frontend/src/apis/api/UserApi.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/frontend/src/apis/api/UserApi.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/frontend/src/components/ConfirmEmail.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/frontend/src/components/SignIn.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/frontend/src/components/SignUp.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/frontend/src/components/SignUpEmail.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/frontend/src/components/callback.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/frontend/src/global/react-app-env.d.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/frontend/src/global/setupTests.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/frontend/src/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/frontend/src/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/frontend/src/pages/Intro.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/frontend/src/recoil/modalState.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/frontend/src/styles/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/frontend/src/styles/App.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/frontend/src/styles/ConfirmEmail.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/frontend/src/styles/Intro.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/frontend/src/styles/Modal.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/frontend/src/styles/SignIn.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/frontend/src/styles/SignUp.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/frontend/src/styles/SignUpEmail.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/frontend/src/styles/common.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/frontend/src/styles/index.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/frontend/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/frontend/tsconfig.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/provit/backend/adapter/in/web/OAuthController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/provit/backend/adapter/in/web/OAuthController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/provit/backend/adapter/in/web/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/provit/backend/adapter/in/web/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/provit/backend/application/service/EmailService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/provit/backend/application/service/EmailService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/provit/backend/application/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/provit/backend/application/service/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -339,6 +275,7 @@
       <workItem from="1703111398842" duration="48170000" />
       <workItem from="1703568105533" duration="14095000" />
       <workItem from="1703742278911" duration="33019000" />
+      <workItem from="1704363873235" duration="637000" />
     </task>
     <task id="LOCAL-00001" summary="modified files">
       <created>1701905703824</created>
