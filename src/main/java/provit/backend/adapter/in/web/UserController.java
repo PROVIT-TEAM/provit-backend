@@ -2,6 +2,7 @@ package provit.backend.adapter.in.web;
 
 import jakarta.mail.MessagingException;
 import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
@@ -12,6 +13,8 @@ import provit.backend.application.port.in.dto.*;
 import provit.backend.application.port.in.RegistUseCase;
 import provit.backend.application.service.EmailService;
 import provit.backend.config.jwt.TokenProvider;
+
+import java.io.IOException;
 
 @RestController
 @RequestMapping("/user")
@@ -55,13 +58,15 @@ public class UserController {
     //이메일 인증 테스트
     private final EmailService emailService;
     @GetMapping("/sendEmailTest")
-    public void sendTest() throws MessagingException {
-        emailService.test1();
+    public void sendTest(HttpServletRequest request) throws MessagingException {
+        log.info(request.getParameter("email"));
+        emailService.test1(request.getParameter("email"));
     }
     @GetMapping("/emailConfirm")
-    public String emailTest(HttpServletRequest request){
+    public String emailTest(HttpServletRequest request, HttpServletResponse response) throws IOException {
         log.info(request.toString());
         log.info("api 호출 성공");
         return "인증 완료";
+//        response.sendRedirect("http://localhost:3000/signUpInfo");
     }
 }

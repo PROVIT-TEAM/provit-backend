@@ -3,64 +3,57 @@ import { atom, useRecoilState } from "recoil";
 import {instance, authInstance} from "../utils/instance";
 
 export interface UserInfo {
-    email: string;
-    name: string;
-    userId: string;
-    password: string;
-    birth: string;
-    marketing: boolean;
+    email: string,
+    password: string,
+    name: string,
+    year: string,
+    month: string,
+    day: string,
+    marketing: string,
 }
 export interface LoginInfo{
-    username: string;
-    password: string;
-}
-export const loginInput = atom<LoginInfo>({
-    key: 'loginInputState',
-    default: {
-        username: '',
-        password: '',
-    }
-})
-export const signUptState = atom<UserInfo>({
-    key: 'SignUpInputState',
-    default: {
-        email: 'string',
-        name: 'string',
-        userId: 'string',
-        password: 'string',
-        birth: 'string',
-        marketing: false,
-    }
-})
-
-
-
-export async function signUp(info: UserInfo){
-    try{
-        await axios.post('/user/regist',{
-            email: info.email,
-            name: info.name,
-            userId: info.userId,
-            password: info.password,
-            birth: info.birth,
-            marketing: info.marketing,
-        });
-    } catch (e) {
-        console.log(e);
-    }
+    email: string,
+    password: string,
 }
 
+
+//이메일 회원가입
+export async function emailSignUp(info: UserInfo) {
+    const request = await instance.post('/user/regist',
+    {
+        email: info.email,
+        password: info.password,
+        name: info.name,
+        year: info.year,
+        month: info.month,
+        day: info.day,
+        marketing: info.marketing
+    })
+    .then((response) => {
+        console.log(response.data);
+        sessionStorage.setItem("userState", JSON.stringify(response.data))
+    });
+}
 //이메일 로그인
-export const login = async (user: LoginInfo) => {
-    const isUser = {username: user.username, password: user.password};
-
-    const request = await instance.post('/user/login',isUser)
+export const emailLogin = async (info: LoginInfo) => {
+    const request = await instance.post('/user/login',
+    {
+        email: info.email,
+        password: info.password
+    })
     .then((response)=>{
         console.log(response.data)
         sessionStorage.setItem("userState", JSON.stringify(response.data))
     })
 }
-
+//이메일 인증번호
+export const emailAuthentication = async (email: string) => {
+    const request = await instance.get('/user/sendEmailTest',{
+        params: {
+            email: email,
+        },
+    });
+}
 export async function tokenTest(){
     try{
         await authInstance.post('/user/authTest')

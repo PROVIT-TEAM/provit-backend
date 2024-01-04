@@ -55,6 +55,8 @@ public class UserService implements RegistUseCase, LoginUseCase {
         }
 
         Token token = tokenProvider.createToken(isUser.getEmail(), isUser.getRoles());
+        log.info(token.access_token);
+        log.info(token.refresh_token);
         UserDto user = commandUserPort.findByEmail(isUser.getEmail());
         user.setRefresh(token.refresh_token);
         commandUserPort.updateToken(user);

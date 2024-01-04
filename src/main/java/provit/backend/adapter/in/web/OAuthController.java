@@ -36,8 +36,7 @@ public class OAuthController {
         log.info("state:"+state);
         String access_token= oAuth2UseCase.NaverAccessToken(state, code);
     }
-
-    @GetMapping("/redirect_google") //구글 인가코드, react에서 안받음
+    @GetMapping("/redirect_google")
     public void callback(HttpServletRequest request, HttpServletResponse response) throws IOException{
         String code = request.getParameter("code");
         String access_token = oAuth2UseCase.GoogleAccessToken(code);
