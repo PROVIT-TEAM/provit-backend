@@ -1,0 +1,58 @@
+
+spring:
+  jpa:
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+    defer-datasource-initialization: true
+  datasource:
+    url: jdbc:h2:mem:testdb
+    username: sa
+    password: 1
+  h2:
+    console:
+      enabled: true
+      
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            client-id: 675755157807-l87eeicdhnpt2p4um6pakfgagmmfp8v0.apps.googleusercontent.com
+            client-secret: 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
+            scope:
+              - email
+              - profile
+            redirect-uri: http://localhost:8080/login/oauth2/code/google
+
+          kakao:
+            client-id: 6dc43dc13fee89e168e598325d9e3972
+            client-secret: 8puU1MRj7cDAWOE4Xic0ixtjwzY88czG
+            redirect-uri: http://localhost:8080/login/oauth2/code/kakao
+            client-authentication-method: client_secret_post            
+            authorization-grant-type: authorization_code
+            scope: profile_nickname
+            client-name: Kakao
+
+        provider:            
+          kakao:
+            authorization-uri: https://kauth.kakao.com/oauth/authorize
+            token-uri: https://kauth.kakao.com/oauth/token
+            user-info-uri: https://kapi.kakao.com/v2/user/me
+            user-name-attribute: id            
+jwt:
+  issuer: provit@gmail.com
+  secret: provitstudyprovitstudyprovitstudyprovitstudy
+  
+  access:
+    expiration: 80
+    header: Authorization
+
+  refresh:
+    expiration: 90
+    header: Authorization-refresh
+    
+  profiles:
+    include: jwt
+     
