@@ -8,7 +8,7 @@ public interface MemberService {
     void signUp(MemberSignUpDto memberSignUpDto) throws Exception;
     void update(MemberUpdateDto memberUpdateDto) throws Exception;
     void updatePassword(String checkPassword, String toBePassword) throws Exception;
-    void withdraw(String checkPassword) throws Exception;
+    void withdraw() throws Exception;
     MemberInfoDto getInfo(Long id) throws Exception;
     MemberInfoDto getMyInfo() throws Exception;
 }
