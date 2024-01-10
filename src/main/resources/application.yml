@@ -1,4 +1,3 @@
-
 spring:
   jpa:
     show-sql: true
@@ -40,17 +39,36 @@ spring:
             authorization-uri: https://kauth.kakao.com/oauth/authorize
             token-uri: https://kauth.kakao.com/oauth/token
             user-info-uri: https://kapi.kakao.com/v2/user/me
-            user-name-attribute: id            
+            user-name-attribute: id
+
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: tales0708@gmail.com
+    password: payf qgdn kzsy ewyu
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+            required: true
+          connection-timeout: 5000
+          timeout: 5000
+          write timeout: 5000
+      auth-code-expiration-millis: 900000 #15분
+
+
 jwt:
   issuer: provit@gmail.com
   secret: provitstudyprovitstudyprovitstudyprovitstudy
   
   access:
-    expiration: 80
+    expiration: 300
     header: Authorization
 
   refresh:
-    expiration: 90
+    expiration: 600
     header: Authorization-refresh
     
   profiles:
