@@ -38,12 +38,14 @@ public class MemberServiceImpl implements MemberService{
 
     @Override
     public void update(MemberUpdateDto memberUpdateDto) throws Exception {
+        log.info(memberUpdateDto.toString());
         Member member = memberRepository.findByUsername(SecurityUtil.getLoginUsername()).orElseThrow(() -> new Exception("회원이 존재하지 않습니다"));
         memberUpdateDto.name().ifPresent(member::updateName);
     }
 
     @Override
     public void updatePassword(String checkPassword, String toBePassword) throws Exception {
+        log.info(checkPassword + ", " + toBePassword);
         Member member = memberRepository.findByUsername(SecurityUtil.getLoginUsername()).orElseThrow(() -> new Exception("회원이 존재하지 않습니다"));
         if(!member.matchPassword(passwordEncoder, checkPassword) ) {
             throw new MemberException(MemberExceptionType.WRONG_PASSWORD);
@@ -53,16 +55,17 @@ public class MemberServiceImpl implements MemberService{
 
 
     @Override
-    public void withdraw(String checkPassword) throws Exception {
+    public void withdraw() throws Exception {
         Member member = memberRepository.findByUsername(SecurityUtil.getLoginUsername()).orElseThrow(() -> new Exception("회원이 존재하지 않습니다"));
-        if(!member.matchPassword(passwordEncoder, checkPassword) ) {
-            throw new MemberException(MemberExceptionType.WRONG_PASSWORD);
-        }
+//        if(!member.matchPassword(passwordEncoder, checkPassword) ) {
+//            throw new MemberException(MemberExceptionType.WRONG_PASSWORD);
+//        }
         memberRepository.delete(member);
     }
 
     @Override
     public MemberInfoDto getInfo(Long id) throws Exception {
+        log.info(id.toString());
         Member findMember = memberRepository.findById(id).orElseThrow(() -> new Exception("회원이 없습니다"));
         return new MemberInfoDto(findMember);
     }
