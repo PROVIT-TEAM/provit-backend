@@ -32,18 +32,18 @@ public class Member extends BaseTimeEntity {
     private Long id; //primary Key
 
     @Column(nullable = false, unique = true)
-    private String username; //아이디
-
+    private String username; //아이디(ex -> provit12)
+    private String useraccount; //아이디(이메일 ex -> provit12@naver.com)
     private String password; //비밀번호
 
     @Column(nullable = false, length = 30)
     private String name; //이름
-  
+    
+    private String birth; //생년월일
+    private String socialId;
+
     @Enumerated(EnumType.STRING)
     private Role role; //권한 USER, ADMIN
-    
-    private String socialId;
-    
     @Enumerated(EnumType.STRING)
     private SocialType socialType;
 
@@ -60,7 +60,6 @@ public class Member extends BaseTimeEntity {
     public void updatePassword(PasswordEncoder passwordEncoder, String password){
         this.password = passwordEncoder.encode(password);
     }
-
     public void updateName(String name){
         this.name = name;
     }
