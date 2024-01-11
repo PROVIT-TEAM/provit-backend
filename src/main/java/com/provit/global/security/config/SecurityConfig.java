@@ -85,8 +85,6 @@ public class SecurityConfig {
 			.successHandler(oAuth2LoginSuccessHandler)
 			.failureHandler(oAuth2LoginFailureHandler)
 			.userInfoEndpoint(userInfo -> userInfo.userService(customOAuth2UserService))
-//				.userInfoEndpoint()
-//				.userService(customOAuth2UserService)
 				
 				
 		); // 동의하고 계속하기를 눌렀을 때 Handler 설정
