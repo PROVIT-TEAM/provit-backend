@@ -2,6 +2,8 @@ package com.provit.global.email.service;
 
 import com.provit.domain.member.Member;
 import com.provit.domain.member.repository.MemberRepository;
+import com.provit.global.email.Email;
+import com.provit.global.email.repository.EmailRepository;
 import jakarta.mail.MessagingException;
 import jakarta.mail.internet.MimeMessage;
 import lombok.RequiredArgsConstructor;
@@ -10,6 +12,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
@@ -21,6 +24,7 @@ import java.util.Random;
 public class EmailService {
     private final JavaMailSender javaMailSender;
     private final MemberRepository memberRepository;
+    private final EmailRepository emailRepository;
 
     public ResponseEntity<Map<String, Object>> sendEmail(String email) throws MessagingException {
         Member existMeber = memberRepository.findByUseraccount(email).orElse(null);
@@ -32,11 +36,13 @@ public class EmailService {
         MimeMessage mimeMessage = javaMailSender.createMimeMessage();
         MimeMessageHelper helper = new MimeMessageHelper(mimeMessage, true, "UTF-8");
 
+        /**
+         * 추후에 email, code값을 encoding 하는게 좋을것 같다.
+         * */
         String code = createCode();
         String title = "PROVIT 회원가입";
         String text = "<div>PROVIT 회원 가입 인증 이메일 입니다.</div>"
-                + "<p>인증번호: " + code + "</p>"
-                + "<a href='http://localhost:8080/emailAuth' target='_blank' style='\n" +
+                + "<a href='http://localhost:8080/emailVerify/"+email+"/"+code+"' target='_blank' style='\n" +
                 "    display: inline-block;\n" +
                 "    padding: 10px 20px;\n" +
                 "    background-color: #ffffff;\n" +
@@ -50,6 +56,12 @@ public class EmailService {
         helper.setSubject(title);
         helper.setText(text, true);
         javaMailSender.send(mimeMessage);
+        
+        //이메일 + code 저장
+        emailRepository.save(Email.builder()
+                .email(email)
+                .code(code)
+                .build());
 
         return ResponseEntity.ok().body(Map.of("message", "전송완료"));
     }
@@ -66,5 +78,16 @@ public class EmailService {
         } catch (NoSuchAlgorithmException e) {
             return "MemberService.createCode() exception occur";
         }
+    }
+
+    @Transactional
+    public boolean verify(String email, String code){
+        Email target = emailRepository.findByEmail(email).orElse(null);
+        if (target.getCode().equals(code)){
+            emailRepository.delete(target);
+            return true;
+        }
+
+        return false;
     }
 }

@@ -75,7 +75,7 @@ public class SecurityConfig {
 		http.authorizeHttpRequests(auth -> 
 			auth
 				.requestMatchers("/", "/css/**", "/images/**", "/js/**", "/favicon.ico", "/h2-console/**").permitAll()
-				.requestMatchers("/signUp", "/", "/sendEmail").permitAll()
+				.requestMatchers("/signUp", "/", "/sendEmail", "/emailVerify/**").permitAll()
 				.anyRequest().authenticated()
 
 		);

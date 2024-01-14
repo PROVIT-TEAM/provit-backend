@@ -7,10 +7,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
 
@@ -26,10 +23,16 @@ public class EmailController {
         return emailService.sendEmail(request.get("email"));
     }
 
-    @GetMapping("/emailAuth")
-    public ResponseEntity<?> emailAuth(HttpServletRequest request) {
+    @GetMapping("/emailVerify/{email}/{code}")
+    public ResponseEntity<?> emailAuth(HttpServletRequest request,
+            @PathVariable("email") String email,
+            @PathVariable("code") String code) {
+
         log.info(request.toString());
-        log.info("이메일 인증 성공");
-        return new ResponseEntity<>(HttpStatus.OK);
+        if (emailService.verify(email, code)){
+            return new ResponseEntity<>("이메일 인증 성공", HttpStatus.OK);
+        }
+
+        return new ResponseEntity<>("인증 실패",HttpStatus.BAD_REQUEST);
     }
 }
