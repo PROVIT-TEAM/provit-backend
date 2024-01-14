@@ -22,9 +22,6 @@ public class EmailController {
 
     @PostMapping("/sendEmail")
     public ResponseEntity<?> sendEmail(@RequestBody Map<String, String> request) throws MessagingException {
-        /*
-        * 요청 들어온 request uri를 받아서, 인라인 태그로 걸어주고 사용하면 될 듯
-        * */
         log.info(request.get("email"));
         return emailService.sendEmail(request.get("email"));
     }
@@ -32,7 +29,7 @@ public class EmailController {
     @GetMapping("/emailAuth")
     public ResponseEntity<?> emailAuth(HttpServletRequest request) {
         log.info(request.toString());
-        log.info("api 호출 성공");
+        log.info("이메일 인증 성공");
         return new ResponseEntity<>(HttpStatus.OK);
     }
 }

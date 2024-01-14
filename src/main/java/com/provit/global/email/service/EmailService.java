@@ -7,7 +7,6 @@ import jakarta.mail.internet.MimeMessage;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
@@ -34,7 +33,7 @@ public class EmailService {
         MimeMessageHelper helper = new MimeMessageHelper(mimeMessage, true, "UTF-8");
 
         String code = createCode();
-        String title = "SMTP 테스트";
+        String title = "PROVIT 회원가입";
         String text = "<div>PROVIT 회원 가입 인증 이메일 입니다.</div>"
                 + "<p>인증번호: " + code + "</p>"
                 + "<a href='http://localhost:8080/emailAuth' target='_blank' style='\n" +
@@ -54,14 +53,7 @@ public class EmailService {
 
         return ResponseEntity.ok().body(Map.of("message", "전송완료"));
     }
-    public SimpleMailMessage createEmailForm(String toEmail, String title, String text) {
-        SimpleMailMessage message = new SimpleMailMessage();
-        message.setTo(toEmail);
-        message.setSubject(title);
-        message.setText(text);
 
-        return message;
-    }
     public String createCode() {
         int length = 6;
         try {
