@@ -1,23 +1,19 @@
 package com.provit.domain.member;
 
+import com.provit.domain.schedule.Schedule;
+import jakarta.persistence.*;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 import com.provit.domain.BaseTimeEntity;
 import com.provit.global.oauth2.SocialType;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+
+import java.util.List;
 
 @Table(name = "MEMBER")
 @Getter
@@ -30,6 +26,9 @@ public class Member extends BaseTimeEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id; //primary Key
+
+    @OneToMany(mappedBy = "member", cascade = CascadeType.ALL)
+    private List<Schedule> scheduleList;
 
     @Column(nullable = false, unique = true)
     private String username; //아이디(ex -> provit12)
