@@ -76,6 +76,7 @@ public class SecurityConfig {
 			auth
 				.requestMatchers("/", "/css/**", "/images/**", "/js/**", "/favicon.ico", "/h2-console/**").permitAll()
 				.requestMatchers("/signUp", "/", "/sendEmail", "/emailVerify/**").permitAll()
+				.requestMatchers("/schedule/**").hasAnyRole("GUEST", "USER")
 				.anyRequest().authenticated()
 
 		);
