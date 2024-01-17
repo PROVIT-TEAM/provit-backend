@@ -27,7 +27,7 @@ public class Member extends BaseTimeEntity {
     @Column(name = "id")
     private Long id; //primary Key
 
-    @OneToMany(mappedBy = "member", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "member", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Schedule> scheduleList;
 
     @Column(nullable = false, unique = true)
