@@ -32,4 +32,11 @@ public class Schedule extends BaseTimeEntity {
     private String startDate;
     @ScheduleDate
     private String endDate;
+
+    public void updateTitle(String newTitle) {
+        this.title = newTitle;
+    }
+    public void updateContent(String newContent) {
+        this.content = newContent;
+    }
 }
