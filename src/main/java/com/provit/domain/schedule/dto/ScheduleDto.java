@@ -8,7 +8,7 @@ import lombok.Data;
 public class ScheduleDto {
 
     private final String title;
-    private final String description;
+    private final String content;
     private final String startDate;
     private final String endDate;
 

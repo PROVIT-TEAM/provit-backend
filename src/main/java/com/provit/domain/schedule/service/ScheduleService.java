@@ -24,7 +24,7 @@ public class ScheduleService {
         log.info("scheduleDto:"+scheduleDto.toString());
         scheduleRepository.save(Schedule.builder()
                 .title(scheduleDto.getTitle())
-                .description(scheduleDto.getDescription())
+                .content(scheduleDto.getContent())
                 .startDate(scheduleDto.getStartDate())
                 .endDate(scheduleDto.getEndDate())
                 .member(findMember)
