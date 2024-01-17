@@ -26,7 +26,8 @@ public class Schedule extends BaseTimeEntity {
     private Member member;
 
     private String title;
-    private String description;
+    @Column(length = 1000)
+    private String content;
     @ScheduleDate
     private String startDate;
     @ScheduleDate
