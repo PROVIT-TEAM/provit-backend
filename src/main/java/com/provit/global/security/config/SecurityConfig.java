@@ -40,6 +40,8 @@ public class SecurityConfig {
 	private final OAuth2LoginFailureHandler oAuth2LoginFailureHandler;
 	private final CustomOAuth2UserService customOAuth2UserService;
 
+	private final CorsConfig corsConfig;
+	
 	@Bean
 	public AuthenticationManager authenticationManager() {// AuthenticationManager 등록
 		DaoAuthenticationProvider provider = new DaoAuthenticationProvider(); // DaoAuthenticationProvider 사용
@@ -75,7 +77,7 @@ public class SecurityConfig {
 		http.authorizeHttpRequests(auth -> 
 			auth
 				.requestMatchers("/", "/css/**", "/images/**", "/js/**", "/favicon.ico", "/h2-console/**").permitAll()
-				.requestMatchers("/signUp", "/").permitAll()
+				.requestMatchers("/signup", "/", "/oauth/**").permitAll()
 				.anyRequest().authenticated()
 
 		);
@@ -93,6 +95,7 @@ public class SecurityConfig {
 			 // 소셜 로그인 실패 시 핸들러 설정
              // customUserService 설정
 
+		http.addFilter(corsConfig.corsFilter());
 		http.addFilterAfter(jsonUsernamePasswordLoginFilter(), LogoutFilter.class);
 		http.addFilterBefore(jwtAuthenticationProcessingFilter(), JsonUsernamePasswordAuthenticationFilter.class);
 

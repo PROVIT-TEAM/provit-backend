@@ -34,10 +34,11 @@ public class MemberController {
     /**
      * 회원가입
      */
-    @PostMapping("/signUp")
+    @PostMapping("/signup")
     @ResponseStatus(HttpStatus.OK)
     public void signUp(@Valid @RequestBody MemberSignUpDto memberSignUpDto) throws Exception {
     	log.info("signUp");
+    	System.out.println(memberSignUpDto);
         memberService.signUp(memberSignUpDto);
     }
 
