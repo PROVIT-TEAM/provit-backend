@@ -51,13 +51,13 @@ public class JwtServiceImpl implements JwtService{
     
 
     @Override
-    public String createAccessToken(String username) {
+    public String createAccessToken(String email) {
         return JWT.create()
                 .withSubject(ACCESS_TOKEN_SUBJECT)
                 .withExpiresAt(
                 		new Date(System.currentTimeMillis() + 
                 				accessTokenValidityInSeconds * 1000))
-                .withClaim(USERNAME_CLAIM, username)
+                .withClaim(USERNAME_CLAIM, email)
                 .sign(Algorithm.HMAC512(secret));
     }
 
@@ -72,8 +72,8 @@ public class JwtServiceImpl implements JwtService{
     }
 
     @Override
-    public void updateRefreshToken(String username, String refreshToken) {
-        memberRepository.findByUsername(username)
+    public void updateRefreshToken(String email, String refreshToken) {
+        memberRepository.findByEmail(email)
                 .ifPresentOrElse(
                         member -> member.updateRefreshToken(refreshToken),
                         () -> new Exception("회원이 없습니다")
@@ -81,8 +81,8 @@ public class JwtServiceImpl implements JwtService{
     }
 
     @Override
-    public void destroyRefreshToken(String username) {
-        memberRepository.findByUsername(username)
+    public void destroyRefreshToken(String email) {
+        memberRepository.findByEmail(email)
                 .ifPresentOrElse(
                         member -> member.destroyRefreshToken(),
                         () -> new Exception("회원이 없습니다")

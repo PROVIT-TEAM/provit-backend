@@ -24,13 +24,19 @@ public class MemberServiceImpl implements MemberService{
     private final MemberRepository memberRepository;
     private final PasswordEncoder passwordEncoder;
 
+	@Override
+	public boolean existsByUsername(String username){
+		boolean existsUser = memberRepository.existsByUsername(username);
+		return existsUser;		
+	}
+	
     @Override
-    public void signUp(MemberSignUpDto memberSignUpDto) throws Exception {
+    public void signup(MemberSignUpDto memberSignUpDto) throws Exception {
         Member member = memberSignUpDto.toEntity();
         member.addUserAuthority();
         member.encodePassword(passwordEncoder);
 
-        if(memberRepository.findByUsername(memberSignUpDto.username()).isPresent()){
+        if(memberRepository.findByEmail(memberSignUpDto.email()).isPresent()){
             throw new MemberException(MemberExceptionType.ALREADY_EXIST_USERNAME);            
         }
         memberRepository.save(member);
@@ -38,13 +44,15 @@ public class MemberServiceImpl implements MemberService{
 
     @Override
     public void update(MemberUpdateDto memberUpdateDto) throws Exception {
-        Member member = memberRepository.findByUsername(SecurityUtil.getLoginUsername()).orElseThrow(() -> new Exception("회원이 존재하지 않습니다"));
+        log.info(memberUpdateDto.toString());
+        Member member = memberRepository.findByEmail(SecurityUtil.getLoginUsername()).orElseThrow(() -> new Exception("회원이 존재하지 않습니다"));
         memberUpdateDto.name().ifPresent(member::updateName);
     }
 
     @Override
     public void updatePassword(String checkPassword, String toBePassword) throws Exception {
-        Member member = memberRepository.findByUsername(SecurityUtil.getLoginUsername()).orElseThrow(() -> new Exception("회원이 존재하지 않습니다"));
+        log.info(checkPassword + ", " + toBePassword);
+        Member member = memberRepository.findByEmail(SecurityUtil.getLoginUsername()).orElseThrow(() -> new Exception("회원이 존재하지 않습니다"));
         if(!member.matchPassword(passwordEncoder, checkPassword) ) {
             throw new MemberException(MemberExceptionType.WRONG_PASSWORD);
         }
@@ -53,23 +61,24 @@ public class MemberServiceImpl implements MemberService{
 
 
     @Override
-    public void withdraw(String checkPassword) throws Exception {
-        Member member = memberRepository.findByUsername(SecurityUtil.getLoginUsername()).orElseThrow(() -> new Exception("회원이 존재하지 않습니다"));
-        if(!member.matchPassword(passwordEncoder, checkPassword) ) {
-            throw new MemberException(MemberExceptionType.WRONG_PASSWORD);
-        }
+    public void withdraw() throws Exception {
+        Member member = memberRepository.findByEmail(SecurityUtil.getLoginUsername()).orElseThrow(() -> new Exception("회원이 존재하지 않습니다"));
+//        if(!member.matchPassword(passwordEncoder, checkPassword) ) {
+//            throw new MemberException(MemberExceptionType.WRONG_PASSWORD);
+//        }
         memberRepository.delete(member);
     }
 
     @Override
     public MemberInfoDto getInfo(Long id) throws Exception {
+        log.info(id.toString());
         Member findMember = memberRepository.findById(id).orElseThrow(() -> new Exception("회원이 없습니다"));
         return new MemberInfoDto(findMember);
     }
 
     @Override
     public MemberInfoDto getMyInfo() throws Exception {
-        Member findMember = memberRepository.findByUsername(SecurityUtil.getLoginUsername()).orElseThrow(() -> new Exception("회원이 없습니다"));
+        Member findMember = memberRepository.findByEmail(SecurityUtil.getLoginUsername()).orElseThrow(() -> new Exception("회원이 없습니다"));
         return new MemberInfoDto(findMember);
     }
 }
