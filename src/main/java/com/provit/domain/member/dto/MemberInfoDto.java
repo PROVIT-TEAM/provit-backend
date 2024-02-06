@@ -2,10 +2,12 @@ package com.provit.domain.member.dto;
 
 import com.provit.domain.member.Member;
 
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 
 @Data
+@AllArgsConstructor
 public class MemberInfoDto {
 	private final String username;
     private final String useraccount;
@@ -13,7 +15,6 @@ public class MemberInfoDto {
     private final String password;
     private final String birth;
 
-    @Builder
     public MemberInfoDto(Member member) {
         this.username = member.getUsername();
         this.useraccount = member.getUseraccount();

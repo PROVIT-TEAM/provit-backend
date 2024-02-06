@@ -1,20 +1,27 @@
 package com.provit.domain.schedule.dto;
 
+import com.provit.domain.schedule.Schedule;
 import jakarta.validation.constraints.NotBlank;
-import lombok.Builder;
-import lombok.Data;
+import lombok.*;
 
 @Data
-@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class ScheduleDto {
+    Long id;
+    @NotBlank
+    String title;
+    String content;
+    @NotBlank
+    String startDate;
+    @NotBlank
+    String endDate;
 
-    private final Long id;
-    @NotBlank
-    private final String title;
-    private final String content;
-    @NotBlank
-    private final String startDate;
-    @NotBlank
-    private final String endDate;
-
+    public ScheduleDto(Schedule schedule) {
+        this.id = schedule.getId();
+        this.title = schedule.getTitle();
+        this.content = schedule.getContent();
+        this.startDate = schedule.getStartDate();
+        this.endDate = schedule.getEndDate();
+    }
 }

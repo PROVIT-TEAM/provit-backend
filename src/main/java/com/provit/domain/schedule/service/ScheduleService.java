@@ -4,6 +4,7 @@ import com.provit.domain.member.Member;
 import com.provit.domain.member.repository.MemberRepository;
 import com.provit.domain.schedule.Schedule;
 import com.provit.domain.schedule.dto.ScheduleDto;
+import com.provit.domain.schedule.dto.ScheduleListDto;
 import com.provit.domain.schedule.dto.ScheduleUpdateDto;
 import com.provit.domain.schedule.repository.ScheduleRepository;
 import com.provit.global.security.utils.SecurityUtil;
@@ -13,6 +14,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Service
 @Slf4j
 @RequiredArgsConstructor
@@ -21,6 +25,10 @@ public class ScheduleService implements ScheduleUseCase{
     private final ScheduleRepository scheduleRepository;
     private final MemberRepository memberRepository;
 
+
+    /**
+     * 일정등록
+     */
     @Override
     public ResponseEntity<String> addSchedule(ScheduleDto scheduleDto) throws Exception {
         Member findMember = memberRepository.findByUsername(SecurityUtil.getLoginUsername())
@@ -36,6 +44,10 @@ public class ScheduleService implements ScheduleUseCase{
 
         return ResponseEntity.ok("등록 완료");
     }
+
+    /**
+     * 등록된 일정 수정
+     */
     @Override
     public ResponseEntity<String> updateSchedule(ScheduleUpdateDto updateDto) throws Exception {
         Schedule schedule = scheduleRepository.findById(updateDto.id()).orElseThrow(() -> new Exception("존재하지 않는 일정입니다."));
@@ -58,4 +70,30 @@ public class ScheduleService implements ScheduleUseCase{
 //        schedule.updateContent(content);
 //        return ResponseEntity.ok("수정 완료");
 //    }
+
+    /**
+     * 일정 삭제
+     */
+    @Override
+    public ResponseEntity<String> deleteSchedule(ScheduleDto scheduleDto) {
+        scheduleRepository.deleteById(scheduleDto.getId());
+        return ResponseEntity.ok("삭제 완료");
+    }
+
+    /**
+     * 등록된 일정 조회
+     */
+    @Override
+    public ResponseEntity<?> getScheduleList() throws Exception {
+        Member findMember = memberRepository.findByUsername(SecurityUtil.getLoginUsername()).orElseThrow(() -> new Exception("회원이 없습니다"));
+        var scheduleEntityList = scheduleRepository.findAllByMember(findMember).orElse(null);
+
+        ScheduleListDto result = new ScheduleListDto();
+        if (scheduleEntityList != null){
+            scheduleEntityList.forEach(e -> {
+                result.ScheduleList.add(new ScheduleDto(e));
+            });
+        }
+        return ResponseEntity.ok(result);
+    }
 }

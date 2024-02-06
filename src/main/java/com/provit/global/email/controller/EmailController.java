@@ -3,6 +3,7 @@ package com.provit.global.email.controller;
 import com.provit.global.email.service.EmailService;
 import jakarta.mail.MessagingException;
 import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
@@ -24,7 +25,7 @@ public class EmailController {
     }
 
     @GetMapping("/emailVerify/{email}/{code}")
-    public ResponseEntity<?> emailAuth(HttpServletRequest request,
+    public ResponseEntity<?> emailAuth(HttpServletRequest request, HttpServletResponse response,
             @PathVariable("email") String email,
             @PathVariable("code") String code) {
 

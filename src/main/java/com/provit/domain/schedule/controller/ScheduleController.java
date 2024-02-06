@@ -23,4 +23,14 @@ public class ScheduleController {
     public ResponseEntity<?> updateSchedule(@RequestBody ScheduleUpdateDto updateDto) throws Exception{
         return scheduleService.updateSchedule(updateDto);
     }
+
+    @DeleteMapping("/delete")
+    public ResponseEntity<?> deleteSchedule(@RequestBody ScheduleDto scheduleDto){
+        return scheduleService.deleteSchedule(scheduleDto);
+    }
+
+    @GetMapping("/list")
+    public ResponseEntity<?> getMySchedule() throws Exception {
+        return scheduleService.getScheduleList();
+    }
 }

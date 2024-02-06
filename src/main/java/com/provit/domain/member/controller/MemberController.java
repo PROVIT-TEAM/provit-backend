@@ -80,7 +80,7 @@ public class MemberController {
         log.info(id.toString());
         MemberInfoDto info = memberService.getInfo(id);
         log.info("member info:"+info);
-        return new ResponseEntity(info, HttpStatus.OK);
+        return new ResponseEntity<>(info, HttpStatus.OK);
     }
 
     /**
@@ -90,7 +90,7 @@ public class MemberController {
     public ResponseEntity<?> getMyInfo(HttpServletResponse response) throws Exception {
         MemberInfoDto info = memberService.getMyInfo();
         log.info("member Update");
-        return new ResponseEntity(info, HttpStatus.OK);
+        return new ResponseEntity<>(info, HttpStatus.OK);
     }
    
 }
