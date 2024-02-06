@@ -21,7 +21,8 @@ public class EmailController {
     @PostMapping("/sendEmail")
     public ResponseEntity<?> sendEmail(@RequestBody Map<String, String> request) throws MessagingException {
         log.info(request.get("email"));
-        return emailService.sendEmail(request.get("email"));
+        emailService.sendEmail(request.get("email"));
+        return new ResponseEntity<>("이메일 요청 성공", HttpStatus.OK);
     }
 
     @GetMapping("/emailVerify/{email}/{code}")

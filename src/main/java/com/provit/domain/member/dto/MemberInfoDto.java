@@ -10,14 +10,14 @@ import lombok.Data;
 @AllArgsConstructor
 public class MemberInfoDto {
 	private final String username;
-    private final String useraccount;
+    private final String email;
 	private final String name;
     private final String password;
     private final String birth;
 
     public MemberInfoDto(Member member) {
         this.username = member.getUsername();
-        this.useraccount = member.getUseraccount();
+        this.email = member.getEmail();
         this.name = member.getName();
         this.password = member.getPassword();
         this.birth = member.getBirth();

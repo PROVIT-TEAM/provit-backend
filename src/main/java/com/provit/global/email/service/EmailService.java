@@ -27,7 +27,7 @@ public class EmailService {
     private final EmailRepository emailRepository;
 
     public ResponseEntity<Map<String, Object>> sendEmail(String email) throws MessagingException {
-        Member existMeber = memberRepository.findByUseraccount(email).orElse(null);
+        Member existMeber = memberRepository.findByEmail(email).orElse(null);
         if (existMeber != null){
             return ResponseEntity.status(HttpStatus.BAD_REQUEST)
                     .body(Map.of("message", "이미 사용 중인 이메일입니다."));
@@ -42,7 +42,7 @@ public class EmailService {
         String code = createCode();
         String title = "PROVIT 회원가입";
         String text = "<div>PROVIT 회원 가입 인증 이메일 입니다.</div>"
-                + "<a href='http://localhost:8080/emailVerify/"+email+"/"+code+"' target='_blank' style='\n" +
+                + "<a href='http://localhost:3000/email/"+email+"/"+code+"' target='_blank' style='\n" +
                 "    display: inline-block;\n" +
                 "    padding: 10px 20px;\n" +
                 "    background-color: #ffffff;\n" +

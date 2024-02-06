@@ -30,17 +30,17 @@ public class LoginSuccessJWTProvideHandler extends SimpleUrlAuthenticationSucces
     		Authentication authentication) 
     		throws IOException, ServletException {
 
-        String username = extractUsername(authentication);
-        String accessToken = jwtService.createAccessToken(username);
+        String email = extractUsername(authentication);
+        String accessToken = jwtService.createAccessToken(email);
         String refreshToken = jwtService.createRefreshToken();
 
         jwtService.sendAccessAndRefreshToken(response, accessToken, refreshToken);
         
-        memberRepository.findByUsername(username).ifPresent(
+        memberRepository.findByEmail(email).ifPresent(
                 member -> member.updateRefreshToken(refreshToken)
         );
 
-        log.info( "로그인에 성공합니다. username: {}" ,username);
+        log.info( "로그인에 성공합니다. username: {}", email);
         log.info( "AccessToken 을 발급합니다. AccessToken: {}" ,accessToken);
         log.info( "RefreshToken 을 발급합니다. RefreshToken: {}" ,refreshToken);
     }

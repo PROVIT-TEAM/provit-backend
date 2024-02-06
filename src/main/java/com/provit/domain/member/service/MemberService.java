@@ -5,7 +5,8 @@ import com.provit.domain.member.dto.MemberSignUpDto;
 import com.provit.domain.member.dto.MemberUpdateDto;
 
 public interface MemberService {
-    void signUp(MemberSignUpDto memberSignUpDto) throws Exception;
+	boolean existsByUsername(String username);
+    void signup(MemberSignUpDto memberSignUpDto) throws Exception;
     void update(MemberUpdateDto memberUpdateDto) throws Exception;
     void updatePassword(String checkPassword, String toBePassword) throws Exception;
     void withdraw() throws Exception;

@@ -20,6 +20,7 @@ import com.provit.domain.member.dto.UpdatePasswordDto;
 import com.provit.domain.member.service.MemberService;
 import com.provit.domain.member.service.MemberServiceImpl;
 
+import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -31,13 +32,29 @@ import lombok.extern.slf4j.Slf4j;
 public class MemberController {
     private final MemberService memberService;
 
+    @GetMapping("/usernameVerify")
+    public ResponseEntity<?> usernameVerify(HttpServletRequest request,
+            @PathVariable("username") String username) {
+
+        log.info(request.toString());
+        boolean existsUser = memberService.existsByUsername(username);
+        
+        if (existsUser){
+            return new ResponseEntity<>("유저 가입", HttpStatus.OK);
+        }
+
+        return new ResponseEntity<>("중복 유저",HttpStatus.BAD_REQUEST);
+    }
+    
     /**
      * 회원가입
      */
-    @PostMapping("/signUp")
+    @PostMapping("/signup")
+    @ResponseStatus(HttpStatus.OK)
     public ResponseEntity<HttpStatus> signUp(@Valid @RequestBody MemberSignUpDto memberSignUpDto) throws Exception {
-    	log.info("signUp");
-        memberService.signUp(memberSignUpDto);
+    	log.info("signup");
+    	System.out.println(memberSignUpDto);
+        memberService.signup(memberSignUpDto);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 

@@ -27,12 +27,11 @@ public class JsonUsernamePasswordAuthenticationFilter
 
     private final ObjectMapper objectMapper;
     
-    private static final String USERNAME_KEY="username";
+    private static final String USERNAME_KEY="email"; // username
     private static final String PASSWORD_KEY="password";
 
     private static final AntPathRequestMatcher DEFAULT_LOGIN_PATH_REQUEST_MATCHER =
-            new AntPathRequestMatcher(DEFAULT_LOGIN_REQUEST_URL, HTTP_METHOD); // /login 의 요청에, POST로 온 요청에 매칭된다.
-
+            new AntPathRequestMatcher(DEFAULT_LOGIN_REQUEST_URL, HTTP_METHOD); 
 
     public JsonUsernamePasswordAuthenticationFilter(ObjectMapper objectMapper) {
         super(DEFAULT_LOGIN_PATH_REQUEST_MATCHER);   // GET으로 온 요청을 처리하기 위해 설정

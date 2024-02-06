@@ -31,7 +31,7 @@ public class ScheduleService implements ScheduleUseCase{
      */
     @Override
     public ResponseEntity<String> addSchedule(ScheduleDto scheduleDto) throws Exception {
-        Member findMember = memberRepository.findByUsername(SecurityUtil.getLoginUsername())
+        Member findMember = memberRepository.findByEmail(SecurityUtil.getLoginUsername())
                 .orElseThrow(() -> new Exception("회원이 없습니다"));
         log.info("scheduleDto:"+scheduleDto.toString());
         scheduleRepository.save(Schedule.builder()
