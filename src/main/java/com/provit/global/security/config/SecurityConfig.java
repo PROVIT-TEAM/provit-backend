@@ -78,6 +78,7 @@ public class SecurityConfig {
 			auth
 				.requestMatchers("/", "/css/**", "/images/**", "/js/**", "/favicon.ico", "/h2-console/**").permitAll()
 				.requestMatchers("/signup", "/", "/oauth/**", "/sendEmail", "/emailVerify/**").permitAll()
+				.requestMatchers("/swagger-ui/**", "/swagger-resources/**", "/v3/**").permitAll()
 				.requestMatchers("/schedule/**").hasAnyRole("GUEST", "USER")
 				.anyRequest().authenticated()
 

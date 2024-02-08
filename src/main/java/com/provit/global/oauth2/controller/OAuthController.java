@@ -2,6 +2,7 @@ package com.provit.global.oauth2.controller;
 
 import java.util.Map;
 
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -20,6 +21,7 @@ import lombok.extern.slf4j.Slf4j;
 @RestController
 @RequiredArgsConstructor
 @Slf4j
+@Tag(name = "3. O-AUTH2", description = "O-AUTH2 서비스 API")
 public class OAuthController {
 	private final MemberRepository memberRepository;
 	private final JwtService jwtService;

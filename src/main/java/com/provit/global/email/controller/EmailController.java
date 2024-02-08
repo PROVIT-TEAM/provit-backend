@@ -1,6 +1,8 @@
 package com.provit.global.email.controller;
 
 import com.provit.global.email.service.EmailService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.mail.MessagingException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -15,10 +17,12 @@ import java.util.Map;
 @RestController
 @RequiredArgsConstructor
 @Slf4j
+@Tag(name = "2. 이메일", description = "인증 이메일 전송/검증 API")
 public class EmailController {
     private final EmailService emailService;
 
     @PostMapping("/sendEmail")
+    @Operation(summary = "인증 이메일 전송")
     public ResponseEntity<?> sendEmail(@RequestBody Map<String, String> request) throws MessagingException {
         log.info(request.get("email"));
         emailService.sendEmail(request.get("email"));
@@ -26,6 +30,7 @@ public class EmailController {
     }
 
     @GetMapping("/emailVerify/{email}/{code}")
+    @Operation(summary = "인증번호 검증")
     public ResponseEntity<?> emailAuth(HttpServletRequest request, HttpServletResponse response,
             @PathVariable("email") String email,
             @PathVariable("code") String code) {

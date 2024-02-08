@@ -1,5 +1,7 @@
 package com.provit.domain.member.controller;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -29,10 +31,12 @@ import lombok.extern.slf4j.Slf4j;
 @RestController
 @RequiredArgsConstructor
 @Slf4j
+@Tag(name = "1. 회원가입/사용자", description = "회원가입 및 사용자 정보 관리 API")
 public class MemberController {
     private final MemberService memberService;
 
     @GetMapping("/usernameVerify")
+    @Operation(summary = "중복 유저 확인")
     public ResponseEntity<?> usernameVerify(HttpServletRequest request,
             @PathVariable("username") String username) {
 
@@ -50,6 +54,7 @@ public class MemberController {
      * 회원가입
      */
     @PostMapping("/signup")
+    @Operation(summary = "회원가입")
     @ResponseStatus(HttpStatus.OK)
     public ResponseEntity<HttpStatus> signUp(@Valid @RequestBody MemberSignUpDto memberSignUpDto) throws Exception {
     	log.info("signup");
@@ -62,6 +67,7 @@ public class MemberController {
      * 회원정보수정
      */
     @PutMapping("/member")
+    @Operation(summary = "회원정보 수정")
     public ResponseEntity<?> updateBasicInfo(@Valid @RequestBody MemberUpdateDto memberUpdateDto) throws Exception {
         log.info("member Update");
         memberService.update(memberUpdateDto);
@@ -72,6 +78,7 @@ public class MemberController {
      * 비밀번호 수정
      */
     @PutMapping("/member/password")
+    @Operation(summary = "비밀번호 수정")
     public ResponseEntity<HttpStatus> updatePassword(@Valid @RequestBody UpdatePasswordDto updatePasswordDto) throws Exception {
         log.info("password Update");
         memberService.updatePassword(updatePasswordDto.checkPassword(),updatePasswordDto.toBePassword());
@@ -83,6 +90,7 @@ public class MemberController {
      * 회원탈퇴
      */
     @DeleteMapping("/member")
+    @Operation(summary = "회원탈퇴")
     public ResponseEntity<HttpStatus> withdraw() throws Exception {
         log.info("member withdraw");
         memberService.withdraw();
@@ -93,6 +101,7 @@ public class MemberController {
      * 회원정보조회
      */
     @GetMapping("/member/{id}")
+    @Operation(summary = "회원정보 조회")
     public ResponseEntity<?> getInfo(@Valid @PathVariable("id") Long id) throws Exception {
         log.info(id.toString());
         MemberInfoDto info = memberService.getInfo(id);
@@ -104,6 +113,7 @@ public class MemberController {
      * 내정보조회
      */
     @GetMapping("/member")
+    @Operation(summary = "회원정보 조회")
     public ResponseEntity<?> getMyInfo(HttpServletResponse response) throws Exception {
         MemberInfoDto info = memberService.getMyInfo();
         log.info("member Update");
