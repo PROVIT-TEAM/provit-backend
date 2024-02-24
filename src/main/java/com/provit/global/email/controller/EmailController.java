@@ -21,7 +21,7 @@ import java.util.Map;
 public class EmailController {
     private final EmailService emailService;
 
-    @PostMapping("/sendEmail")
+    @PostMapping("/emailVerify")
     @Operation(summary = "인증 이메일 전송")
     public ResponseEntity<?> sendEmail(@RequestBody Map<String, String> request) throws MessagingException {
         log.info(request.get("email"));

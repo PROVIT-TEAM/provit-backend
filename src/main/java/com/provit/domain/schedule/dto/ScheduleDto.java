@@ -10,6 +10,8 @@ import lombok.*;
 public class ScheduleDto {
     Long id;
     @NotBlank
+    String category;
+    @NotBlank
     String title;
     String content;
     @NotBlank

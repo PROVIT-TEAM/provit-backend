@@ -35,15 +35,15 @@ import lombok.extern.slf4j.Slf4j;
 public class MemberController {
     private final MemberService memberService;
 
-    @GetMapping("/usernameVerify")
+    @GetMapping("/usernameVerify/{username}")
     @Operation(summary = "중복 유저 확인")
     public ResponseEntity<?> usernameVerify(HttpServletRequest request,
             @PathVariable("username") String username) {
 
-        log.info(request.toString());
+        log.info("userVerify"+request.toString());
         boolean existsUser = memberService.existsByUsername(username);
         
-        if (existsUser){
+        if (!existsUser){
             return new ResponseEntity<>("유저 가입", HttpStatus.OK);
         }
 
@@ -116,7 +116,6 @@ public class MemberController {
     @Operation(summary = "회원정보 조회")
     public ResponseEntity<?> getMyInfo(HttpServletResponse response) throws Exception {
         MemberInfoDto info = memberService.getMyInfo();
-        log.info("member Update");
         return new ResponseEntity<>(info, HttpStatus.OK);
     }
    

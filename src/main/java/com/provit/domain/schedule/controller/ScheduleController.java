@@ -11,31 +11,30 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/schedule")
 @RequiredArgsConstructor
 @Tag(name = "4. 일정", description = "일정 관련 API")
 public class ScheduleController {
     private final ScheduleService scheduleService;
 
-    @PostMapping("/add")
+    @PostMapping("/schedule")
     @Operation(summary = "일정 등록")
     public ResponseEntity<String> addSchedule(@Valid @RequestBody ScheduleDto scheduleDto) throws Exception {
         return scheduleService.addSchedule(scheduleDto);
     }
 
-    @PutMapping("/update")
+    @PutMapping("/schedule")
     @Operation(summary = "일정 수정")
     public ResponseEntity<?> updateSchedule(@RequestBody ScheduleUpdateDto updateDto) throws Exception{
         return scheduleService.updateSchedule(updateDto);
     }
 
-    @DeleteMapping("/delete")
+    @DeleteMapping("/schedule/{id}")
     @Operation(summary = "일정 삭제")
-    public ResponseEntity<?> deleteSchedule(@RequestBody ScheduleDto scheduleDto){
-        return scheduleService.deleteSchedule(scheduleDto);
+    public ResponseEntity<?> deleteSchedule(@PathVariable("id") Long id) throws Exception{
+        return scheduleService.deleteSchedule(id);
     }
 
-    @GetMapping("/list")
+    @GetMapping("/schedule")
     @Operation(summary = "일정 조회")
     public ResponseEntity<?> getMySchedule() throws Exception {
         return scheduleService.getScheduleList();

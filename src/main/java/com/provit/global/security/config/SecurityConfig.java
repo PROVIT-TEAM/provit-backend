@@ -77,7 +77,7 @@ public class SecurityConfig {
 		http.authorizeHttpRequests(auth -> 
 			auth
 				.requestMatchers("/", "/css/**", "/images/**", "/js/**", "/favicon.ico", "/h2-console/**").permitAll()
-				.requestMatchers("/signup", "/", "/oauth/**", "/sendEmail", "/emailVerify/**").permitAll()
+				.requestMatchers("/signup", "/", "/oauth/**", "/emailVerify/**", "/usernameVerify/**").permitAll()
 				.requestMatchers("/swagger-ui/**", "/swagger-resources/**", "/v3/**").permitAll()
 				.requestMatchers("/schedule/**").hasAnyRole("GUEST", "USER")
 				.anyRequest().authenticated()

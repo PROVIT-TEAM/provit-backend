@@ -4,7 +4,6 @@ import com.provit.domain.member.Member;
 import com.provit.domain.member.repository.MemberRepository;
 import com.provit.domain.schedule.Schedule;
 import com.provit.domain.schedule.dto.ScheduleDto;
-import com.provit.domain.schedule.dto.ScheduleListDto;
 import com.provit.domain.schedule.dto.ScheduleUpdateDto;
 import com.provit.domain.schedule.repository.ScheduleRepository;
 import com.provit.global.security.utils.SecurityUtil;
@@ -25,16 +24,16 @@ public class ScheduleService implements ScheduleUseCase{
     private final ScheduleRepository scheduleRepository;
     private final MemberRepository memberRepository;
 
-
     /**
      * 일정등록
      */
     @Override
     public ResponseEntity<String> addSchedule(ScheduleDto scheduleDto) throws Exception {
-        Member findMember = memberRepository.findByEmail(SecurityUtil.getLoginUsername())
+        Member findMember = memberRepository.findByUsername(SecurityUtil.getLoginUsername())
                 .orElseThrow(() -> new Exception("회원이 없습니다"));
         log.info("scheduleDto:"+scheduleDto.toString());
         scheduleRepository.save(Schedule.builder()
+                .category(scheduleDto.getCategory())
                 .title(scheduleDto.getTitle())
                 .content(scheduleDto.getContent())
                 .startDate(scheduleDto.getStartDate())
@@ -51,11 +50,20 @@ public class ScheduleService implements ScheduleUseCase{
     @Override
     public ResponseEntity<String> updateSchedule(ScheduleUpdateDto updateDto) throws Exception {
         Schedule schedule = scheduleRepository.findById(updateDto.id()).orElseThrow(() -> new Exception("존재하지 않는 일정입니다."));
+        if (updateDto.category().isPresent()){
+            schedule.updateCategory(updateDto.category().get());
+        }
         if (updateDto.title().isPresent()){
             schedule.updateTitle(updateDto.title().get());
         }
         if (updateDto.content().isPresent()){
             schedule.updateContent(updateDto.content().get());
+        }
+        if (updateDto.startDate().isPresent()){
+            schedule.updateStartDate(updateDto.startDate().get());
+        }
+        if (updateDto.endDate().isPresent()){
+            schedule.updateEndDate(updateDto.endDate().get());
         }
 
         return ResponseEntity.ok("수정 완료");
@@ -75,8 +83,13 @@ public class ScheduleService implements ScheduleUseCase{
      * 일정 삭제
      */
     @Override
-    public ResponseEntity<String> deleteSchedule(ScheduleDto scheduleDto) {
-        scheduleRepository.deleteById(scheduleDto.getId());
+    public ResponseEntity<String> deleteSchedule(Long id) throws Exception{
+        Member findMember = memberRepository.findByUsername(SecurityUtil.getLoginUsername()).orElseThrow(() -> new Exception("회원이 없습니다"));
+        var scheduleEntityList = findMember.getScheduleList();
+        Schedule delete = scheduleRepository.findById(id).orElse(null);
+        scheduleEntityList.remove(delete);
+        scheduleRepository.delete(delete);
+
         return ResponseEntity.ok("삭제 완료");
     }
 
@@ -88,12 +101,15 @@ public class ScheduleService implements ScheduleUseCase{
         Member findMember = memberRepository.findByUsername(SecurityUtil.getLoginUsername()).orElseThrow(() -> new Exception("회원이 없습니다"));
         var scheduleEntityList = scheduleRepository.findAllByMember(findMember).orElse(null);
 
-        ScheduleListDto result = new ScheduleListDto();
+        List<ScheduleDto> result = new ArrayList<>();
+
         if (scheduleEntityList != null){
             scheduleEntityList.forEach(e -> {
-                result.ScheduleList.add(new ScheduleDto(e));
+                result.add(new ScheduleDto(e));
             });
+            return ResponseEntity.ok(result);
         }
-        return ResponseEntity.ok(result);
+
+        return ResponseEntity.ok("등록된 일정이 없습니다.");
     }
 }

@@ -25,6 +25,7 @@ public class Schedule extends BaseTimeEntity {
     @JoinColumn(name = "member_id")
     private Member member;
 
+    private String category;
     private String title;
     @Column(length = 1000)
     private String content;
@@ -33,10 +34,13 @@ public class Schedule extends BaseTimeEntity {
     @ScheduleDate
     private String endDate;
 
+    public void updateCategory(String newCategory) {this.category = newCategory;}
     public void updateTitle(String newTitle) {
         this.title = newTitle;
     }
     public void updateContent(String newContent) {
         this.content = newContent;
     }
+    public void updateStartDate(String newStart) {this.startDate = newStart;}
+    public void updateEndDate(String newEnd) {this.endDate = newEnd;}
 }

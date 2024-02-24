@@ -62,7 +62,8 @@ public class MemberServiceImpl implements MemberService{
 
     @Override
     public void withdraw() throws Exception {
-        Member member = memberRepository.findByEmail(SecurityUtil.getLoginUsername()).orElseThrow(() -> new Exception("회원이 존재하지 않습니다"));
+        var target = SecurityUtil.getLoginUsername();
+        Member member = memberRepository.findByUsername(SecurityUtil.getLoginUsername()).orElseThrow(() -> new Exception("회원이 존재하지 않습니다"));
 //        if(!member.matchPassword(passwordEncoder, checkPassword) ) {
 //            throw new MemberException(MemberExceptionType.WRONG_PASSWORD);
 //        }
@@ -78,7 +79,8 @@ public class MemberServiceImpl implements MemberService{
 
     @Override
     public MemberInfoDto getMyInfo() throws Exception {
-        Member findMember = memberRepository.findByEmail(SecurityUtil.getLoginUsername()).orElseThrow(() -> new Exception("회원이 없습니다"));
+        var check = SecurityUtil.getLoginUsername();
+        Member findMember = memberRepository.findByUsername(SecurityUtil.getLoginUsername()).orElseThrow(() -> new Exception("회원이 없습니다"));
         return new MemberInfoDto(findMember);
     }
 }
