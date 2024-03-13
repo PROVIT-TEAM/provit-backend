@@ -7,6 +7,7 @@ import com.provit.global.email.repository.EmailRepository;
 import jakarta.mail.MessagingException;
 import jakarta.mail.internet.MimeMessage;
 import lombok.RequiredArgsConstructor;
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.mail.javamail.JavaMailSender;
@@ -60,6 +61,7 @@ public class EmailService {
         helper.setTo(email);
         helper.setSubject(title);
         helper.setText(htmlContent, true);
+        helper.addInline("img1", new ClassPathResource("static/images/icons8-warning.png"));
         javaMailSender.send(mimeMessage);
         
         //이메일 + code 저장
