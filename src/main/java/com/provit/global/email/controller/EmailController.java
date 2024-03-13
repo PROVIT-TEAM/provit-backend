@@ -12,6 +12,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.IOException;
 import java.util.Map;
 
 @RestController
@@ -23,7 +24,7 @@ public class EmailController {
 
     @PostMapping("/emailVerify")
     @Operation(summary = "인증 이메일 전송")
-    public ResponseEntity<?> sendEmail(@RequestBody Map<String, String> request) throws MessagingException {
+    public ResponseEntity<?> sendEmail(@RequestBody Map<String, String> request) throws MessagingException, IOException {
         log.info(request.get("email"));
         emailService.sendEmail(request.get("email"));
         return new ResponseEntity<>("이메일 요청 성공", HttpStatus.OK);
